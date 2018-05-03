@@ -8,15 +8,13 @@
         errorMessage: 'Olası bir internet sıkıntısı nedeniyle bildiriminiz gösterilemedi.',
         workerPath: "/sw.js",
     };
+            if (Notification.permission !== "denied") {
 
-    //function init() {
-        if (Notification.permission !== "denied") {
-
-            navigator.serviceWorker.getRegistrations().then(function(serviceWorkers) {
+            navigator.serviceWorker.getRegistrations().then(function(_serviceWorkers) {
 
                 var isServiceWorkerActive = false;
 
-                serviceWorkers.forEach(function(_serviceWorker) {
+                _serviceWorkers.forEach(function(_serviceWorker) {
                     if (_serviceWorker.active &&
                         _serviceWorker.active.state === 'activated' &&
                         (_serviceWorker.active.scriptURL.indexOf('sw.js') > -1)) {
@@ -25,29 +23,7 @@
                 });
 
                 if (isServiceWorkerActive) {
-                  /*
-                    navigator.serviceWorker.getRegistration().then(function(registration) {
-                        registration.pushManager.getSubscription().then(function(subscription) {
-                            if (subscription) {
-                                log("got subscription id: ", subscription.endpoint);
-                                user.deviceToken = subscription.endpoint.replace(new RegExp("^(https://android.googleapis.com/gcm/send/|https://updates.push.services.mozilla.com/wpush/v1/)"), "");
-                                if (user.user_id && user.deviceToken && Notification.permission === "granted" && isServiceWorkerActive) {
-                                    log("INFO: Already subscribed");
-                                    log("INFO: user.deviceToken:" + user.deviceToken);
-                                    setStorageValue('sessionStorage', 'FRIZBIT_SESSION', true);
-                                    updateServiceWorker();
-                                    callback(true);
-                                } else {
-                                    callback(false);
-                                }
-                            } else {
-                                callback(false);
-                            }
-                        });
-                    }).catch(function(error) {
-                        //log("ERROR: Getting registration error: " + error);
-                    });
-                    */
+                  console.log('already active')
                 } else {
                     navigator.serviceWorker.register(defaults.workerPath).then(
                         function(success) {}
@@ -56,23 +32,7 @@
                     });
                 }
             });
-
-            /*
-            navigator.serviceWorker.register(defaults.workerPath).then(
-              function(success){}
-              ).catch(function(err){
-                console.log(err);
-              });
-              */
         }
-    //}
-
-    function push(argument) {
-        log("INFO: push function called");
-        if (typeof(argument) == "function") {
-            argument();
-        }
-    }
 
     self.addEventListener('install', function(event) {
         self.skipWaiting();

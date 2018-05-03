@@ -23,15 +23,15 @@
                     }
                 });
 
-                if (isServiceWorkerActive) {
-                  console.log('already active')
-                } else {
+                //if (isServiceWorkerActive) {
+                //  console.log('already active')
+                //} else {
                     navigator.serviceWorker.register(defaults.workerPath).then(
                         function(success) {}
                     ).catch(function(err) {
                         console.log(err);
                     });
-                }
+                //}
             });
                 }
         }

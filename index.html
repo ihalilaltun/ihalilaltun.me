@@ -16,6 +16,28 @@
     
     <link rel="manifest" href="/manifest.json"> 
     <script src='/sw.js'></script> 
+    
+        <script>
+        
+        var agent = '';
+  document.body.onload = function () {
+    setTimeout(function () {
+      if ('serviceWorker' in navigator) {
+        if (/Chrome/i.test(navigator.userAgent)) agent = 'Chrome';
+        else if (/Firefox/i.test(navigator.userAgent)) agent = 'Firefox';
+        navigator.serviceWorker.register('/sw.js').then(function (reg) {
+          console.log('reg is ok');
+        }).catch(function (error) {
+          console.log('Unable to register service worker!', error);
+        });
+      }
+
+    }, 2000);
+
+  };
+        
+        </script>
+    
     <!--
     <script type="text/javascript"> var frizbit = frizbit || []; frizbit.push(["init", { autoRegister: false, notifyBox: { enabled: true } }]); </script>
     -->

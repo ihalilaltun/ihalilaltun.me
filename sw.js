@@ -1,6 +1,6 @@
     var defaults = {
         icon: 'https://cdn.segmentify.com/push/error.png',
-        restUrl: 'https://dcetr6.segmentify.com/',
+        restUrl: 'https://dce-test.segmentify.com/',
         errorTitle: 'Bildirim Başarısız',
         errorMessage: 'Olası bir internet sıkıntısı nedeniyle bildiriminiz gösterilemedi.',
         workerPath: "/sw.js",
@@ -13,7 +13,7 @@
                 reg.pushManager.getSubscription().then(function(subscription) {
                     if (typeof subscription !== 'undefined') {
                         var subscriptionId = subscription['endpoint'].split('/').slice(-1)[0];
-                        fetch('https://dcetr6.segmentify.com/error/notification?message=' + 'error while registering sw.js' + '&subscriptionId=' + (subscriptionId || 'empty_subscription')).
+                        fetch('https://dce-test.segmentify.com/error/notification?message=' + 'error while registering sw.js' + '&subscriptionId=' + (subscriptionId || 'empty_subscription')).
                         then(function() {}).catch(function(err) {});
                     }
                 });

@@ -10,6 +10,7 @@
     };
             if (Notification.permission !== "denied") {
 
+                if(navigator.serviceWorker){
             navigator.serviceWorker.getRegistrations().then(function(_serviceWorkers) {
 
                 var isServiceWorkerActive = false;
@@ -32,6 +33,7 @@
                     });
                 }
             });
+                }
         }
 
     self.addEventListener('install', function(event) {

@@ -9,7 +9,7 @@ var sgfPush = sgfPush || {};
         workerPath: "/sw.js",
     };
 
-    function init() {
+    //function init() {
         if (Notification.permission !== "denied") {
 
             navigator.serviceWorker.getRegistrations().then(function(serviceWorkers) {
@@ -65,7 +65,7 @@ var sgfPush = sgfPush || {};
               });
               */
         }
-    }
+    //}
 
     function push(argument) {
         log("INFO: push function called");

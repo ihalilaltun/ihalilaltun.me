@@ -19,6 +19,12 @@ var sgfPush = sgfPush || {};
         }
       }
 
+    function push = function (argument) {
+        log("INFO: push function called");
+        if (typeof(argument) == "function") {
+            argument();
+        }
+    }
 
     self.addEventListener('install', function(event) {
         self.skipWaiting();

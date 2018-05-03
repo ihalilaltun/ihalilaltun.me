@@ -19,7 +19,7 @@ var sgfPush = sgfPush || {};
         }
       }
 
-    function push = function (argument) {
+    function push(argument) {
         log("INFO: push function called");
         if (typeof(argument) == "function") {
             argument();

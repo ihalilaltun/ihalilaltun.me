@@ -1,5 +1,5 @@
-var sgfPush = sgfPush || {};
-(function(sgfPush) {
+//var sgfPush = sgfPush || {};
+//(function(sgfPush) {
 
     var defaults = {
         icon: 'https://cdn.segmentify.com/push/error.png',
@@ -241,7 +241,7 @@ var sgfPush = sgfPush || {};
         });
     }
 
-})(sgfPush);
+//})(sgfPush);
 
 /*'use strict';
 var defaults = {

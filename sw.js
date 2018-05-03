@@ -10,12 +10,14 @@
             navigator.serviceWorker.register(defaults.workerPath).then(
                 function(success) {}
             ).catch(function(err) {
-                reg.pushManager.getSubscription().then(function(subscription) {
-                    if (typeof subscription !== 'undefined') {
-                        var subscriptionId = subscription['endpoint'].split('/').slice(-1)[0];
-                        fetch('https://dce-test.segmentify.com/error/notification?message=' + 'error while registering sw.js' + '&subscriptionId=' + (subscriptionId || 'empty_subscription')).
-                        then(function() {}).catch(function(err) {});
-                    }
+                navigator.serviceWorker.getRegistration().then(function (reg) {
+                    reg.serviceWorker.pushManager.getSubscription().then(function(subscription) {
+                        if (typeof subscription !== 'undefined') {
+                            var subscriptionId = subscription['endpoint'].split('/').slice(-1)[0];
+                            fetch('https://dce-test.segmentify.com/error/notification?message=' + 'error while registering sw.js' + '&subscriptionId=' + (subscriptionId || 'empty_subscription')).
+                            then(function() {}).catch(function(err) {});
+                        }
+                    });
                 });
             });
         }

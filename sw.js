@@ -11,13 +11,61 @@ var sgfPush = sgfPush || {};
 
     function init() {
         if (Notification.permission !== "denied") {
-          navigator.serviceWorker.register(defaults.workerPath).then(
-            function(success){/*do nothing*/}
-            ).catch(function(err){
-              console.log(err);
+
+            navigator.serviceWorker.getRegistrations().then(function(serviceWorkers) {
+
+                var isServiceWorkerActive = false;
+
+                serviceWorkers.forEach(function(_serviceWorker) {
+                    if (_serviceWorker.active &&
+                        _serviceWorker.active.state === 'activated' &&
+                        (_serviceWorker.active.scriptURL.indexOf('sw.js') > -1)) {
+                        isServiceWorkerActive = true;
+                    }
+                });
+
+                if (isServiceWorkerActive) {
+                  /*
+                    navigator.serviceWorker.getRegistration().then(function(registration) {
+                        registration.pushManager.getSubscription().then(function(subscription) {
+                            if (subscription) {
+                                log("got subscription id: ", subscription.endpoint);
+                                user.deviceToken = subscription.endpoint.replace(new RegExp("^(https://android.googleapis.com/gcm/send/|https://updates.push.services.mozilla.com/wpush/v1/)"), "");
+                                if (user.user_id && user.deviceToken && Notification.permission === "granted" && isServiceWorkerActive) {
+                                    log("INFO: Already subscribed");
+                                    log("INFO: user.deviceToken:" + user.deviceToken);
+                                    setStorageValue('sessionStorage', 'FRIZBIT_SESSION', true);
+                                    updateServiceWorker();
+                                    callback(true);
+                                } else {
+                                    callback(false);
+                                }
+                            } else {
+                                callback(false);
+                            }
+                        });
+                    }).catch(function(error) {
+                        //log("ERROR: Getting registration error: " + error);
+                    });
+                    */
+                } else {
+                    navigator.serviceWorker.register(defaults.workerPath).then(
+                        function(success) {}
+                    ).catch(function(err) {
+                        console.log(err);
+                    });
+                }
             });
+
+            /*
+            navigator.serviceWorker.register(defaults.workerPath).then(
+              function(success){}
+              ).catch(function(err){
+                console.log(err);
+              });
+              */
         }
-      }
+    }
 
     function push(argument) {
         log("INFO: push function called");

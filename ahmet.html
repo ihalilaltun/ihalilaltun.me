@@ -79,6 +79,16 @@ limitations under the License.
 <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-messaging.js"></script>
 
 <script>
+  var config = {
+    apiKey: "AIzaSyAWVLo1aOFsLE7UWAtbAmA3D_U7ai3NZ5U",
+    authDomain: "push-notification-9c1d5.firebaseapp.com",
+    databaseURL: "https://push-notification-9c1d5.firebaseio.com",
+    projectId: "push-notification-9c1d5",
+    storageBucket: "push-notification-9c1d5.appspot.com",
+    messagingSenderId: "179681670744"
+  };
+  firebase.initializeApp(config);
+  
   // [START get_messaging_object]
   // Retrieve Firebase Messaging object.
   const messaging = firebase.messaging();

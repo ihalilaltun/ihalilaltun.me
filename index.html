@@ -37,6 +37,18 @@
   firebase.initializeApp(config);
 </script>
     
+    <script>
+    try {
+    const messaging = firebase.messaging();
+    await messaging.requestPermission();
+    const token = await messaging.getToken();
+    console.log('token:', token);
+    
+    return token;
+  } catch (error) {
+    console.error(error);
+  }</script>
+    
 </head>
 <body style="background-color: #fff400;">
     

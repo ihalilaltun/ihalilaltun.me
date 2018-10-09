@@ -1,14 +1,4 @@
 'use strict';
-// Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDbYUY6t8b4SE86YFGW1lifIV-NtrIRvbg",
-    authDomain: "single-conquest-132007.firebaseapp.com",
-    databaseURL: "https://single-conquest-132007.firebaseio.com",
-    projectId: "single-conquest-132007",
-    storageBucket: "single-conquest-132007.appspot.com",
-    messagingSenderId: "216959062180"
-  };
-  firebase.initializeApp(config);
 
 var messaging = firebase.messaging();
 

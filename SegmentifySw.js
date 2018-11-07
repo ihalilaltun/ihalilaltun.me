@@ -161,13 +161,16 @@ function syncSubscription() {
   self.registration.pushManager.getSubscription().then(function (subscription) {
     if (subscription) {
       var subscriptionId = subscription['endpoint'].split('/').slice(-1)[0];
+      var endpoint = subscription['endpoint'].replace(subscriptionId, '').slice(0, -1);
       var auth = subscription.getKey ? subscription.getKey('auth') : '';
       var key = subscription.getKey ? subscription.getKey('p256dh') : '';
       if (subscriptionId && auth && key) {
         return fetch(defaults.restUrl
           + 'subscription/sync?subscriptionId=' + subscriptionId
+          + '&endpoint=' + endpoint
           + '&auth=' + encodeURIComponent(btoa(String.fromCharCode.apply(null, new Uint8Array(auth))))
-          + '&key=' + encodeURIComponent(btoa(String.fromCharCode.apply(null, new Uint8Array(key))))).catch(function (err) {});
+          + '&key=' + encodeURIComponent(btoa(String.fromCharCode.apply(null, new Uint8Array(key))))).catch(function (err) {
+        });
       }
     }
   });

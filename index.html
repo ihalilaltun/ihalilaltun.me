@@ -23,6 +23,50 @@
     <!--<script src="https://cdn.segmentify.com/93a9a7c4-dc2e-49f7-832e-7c7fc3dabbf9/segmentify.js" charset="UTF-8"></script>-->
     <script src="segmentify-integration.js" charset="UTF-8"></script>
     <link type="text/css" rel="stylesheet" media="screen" href="segmentify.css">
+    
+    <script>
+        var pushId = "web.com.segmentify.push.apple";  
+  
+var subscribe = document.querySelector("#subscribe");  
+subscribe.addEventListener("click", function(evt) {  
+    pushNotification();   
+}, false);  
+  
+var pushNotification = function () {  
+    "use strict";  
+      
+    if ('safari' in window && 'pushNotification' in window.safari) {  
+        var permissionData = window.safari.pushNotification.permission(pushId);  
+        checkRemotePermission(permissionData);  
+    } else {  
+        alert("Push notifications not supported.");  
+    }  
+};  
+  
+var checkRemotePermission = function (permissionData) {  
+    "use strict";  
+      
+    if (permissionData.permission === 'default') {  
+        console.log("The user is making a decision");  
+        window.safari.pushNotification.requestPermission(  
+            'https://safari-test.segmentify.com',  
+            pushId,  
+            {},  
+            checkRemotePermission  
+        );  
+    }  
+    else if (permissionData.permission === 'denied') {  
+        console.dir(arguments);  
+    }  
+    else if (permissionData.permission === 'granted') {  
+        console.log("The user said yes, with token: "+ permissionData.deviceToken);  
+    }  
+};  
+
+
+    </script>
+    
+    
   <!--  
 <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
 <script>

@@ -1,0 +1,8 @@
+{
+  "name": "ihalilaltun",
+  "short_name": "ihalilaltun",
+  "gcm_sender_id": "216959062180",
+  "start_url": "/",
+  "display": "standalone",
+  "gcm_user_visible_only": true
+}

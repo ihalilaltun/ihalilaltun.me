@@ -1,1 +1,1 @@
-importScripts('https://ihalilaltun.me/SegmentifySw.js');
+importScripts('https://ihalilaltun.me/SegmentifySw.js?q=Math.floor(Date.now())');

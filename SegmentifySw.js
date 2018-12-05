@@ -1,5 +1,7 @@
 'use strict';
 
+console.log('I am being updated');
+
 var defaults = {
   icon: 'https://cdn.segmentify.com/push/error.png',
   restUrl: 'https://dce-test.segmentify.com/',

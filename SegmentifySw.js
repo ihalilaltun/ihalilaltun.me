@@ -1,6 +1,6 @@
 'use strict';
-
-console.log('I am being updated');
+var cur_date = new Date().toJSON().slice(0,10).replace(/-/g,'');
+console.log('I am being updated at' + cur_date);
 
 var defaults = {
   icon: 'https://cdn.segmentify.com/push/error.png',

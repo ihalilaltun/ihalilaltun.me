@@ -142,13 +142,24 @@ function showError(error, subscriptionId) {
 }
 
 function showNotification(notification) {
-  return self.registration.showNotification(notification.title, {
-    body: notification.message,
-    icon: notification.icon,
-    image: notification.image,
-    requireInteraction: notification.requireInteraction,
-    data: notification.data
-  });
+  if(getBrowserName() === 'Opera'){
+    self.registration.showNotification(notification.title, {
+      body: notification.message,
+      icon: notification.icon,
+      image: notification.image,
+      requireInteraction: notification.requireInteraction,
+      data: notification.data
+    });
+  }
+  else{
+    return self.registration.showNotification(notification.title, {
+      body: notification.message,
+      icon: notification.icon,
+      image: notification.image,
+      requireInteraction: notification.requireInteraction,
+      data: notification.data
+    }); 
+  }
 }
 
 function interaction(notificationData, type) {
@@ -179,4 +190,12 @@ function syncSubscription() {
       }
     }
   });
+}
+
+function getBrowserName() {
+  var agent = '';
+  if (/OPR/i.test(navigator.userAgent)) agent = 'Opera';
+  else if (/Chrome/i.test(navigator.userAgent)) agent = 'Chrome';
+  else if (/Firefox/i.test(navigator.userAgent)) agent = 'Firefox';
+  return agent;
 }

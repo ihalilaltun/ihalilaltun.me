@@ -31,6 +31,7 @@ self.addEventListener('push', function (event) {
             if (typeof payloadJson !== 'object') {
               throw new Error('Json not valid');
             }
+
             return showSuccess(payloadJson);
           } else { // v1
             // sync subscription
@@ -73,12 +74,40 @@ self.addEventListener('notificationclick', function (event) {
   // Close notification.
   event.notification.close();
 
-  var promise = new Promise(
-    function (resolve) {
-      clients.openWindow(event.notification.data.url);
-      setTimeout(resolve, 1000);
-    }).then(function () {
-  });
+  switch (event.action) {
+    case 'action0':
+      var promise = new Promise(
+        function (resolve) {
+          var redirectUrl = event.notification.data.url;
+          if (event.notification.data.actionUrls.length > 0) {
+            redirectUrl = event.notification.data.actionUrls[0];
+          }
+          clients.openWindow(redirectUrl);
+          setTimeout(resolve, 1000);
+        }).then(function () {
+      });
+      break;
+    case 'action1':
+      var promise = new Promise(
+        function (resolve) {
+          var redirectUrl = event.notification.data.url;
+          if (event.notification.data.actionUrls.length > 1) {
+            redirectUrl = event.notification.data.actionUrls[1];
+          }
+          clients.openWindow(redirectUrl);
+          setTimeout(resolve, 1000);
+        }).then(function () {
+      });
+      break;
+    default:
+      var promise = new Promise(
+        function (resolve) {
+          clients.openWindow(event.notification.data.url);
+          setTimeout(resolve, 1000);
+        }).then(function () {
+      });
+      break;
+  }
 
   // Now wait for the promise to keep the permission alive.
   event.waitUntil(Promise.all([interaction(event.notification.data, 'click'), promise]));
@@ -112,6 +141,10 @@ function showSuccess(data) {
   notification.requireInteraction = true;
   notification.data = {};
   notification.data.url = data.redirectUrl;
+  if (data.actions) {
+    notification.actions = JSON.parse(data.actions) || [];
+    notification.data.actionUrls = JSON.parse(data.actionUrls) || [];
+  }
   if (data.apiKey && data.instanceId) {
     notification.data.apiKey = data.apiKey;
     notification.data.instanceId = data.instanceId;
@@ -142,23 +175,24 @@ function showError(error, subscriptionId) {
 }
 
 function showNotification(notification) {
-  if(getBrowserName() === 'Opera'){
+  if (getBrowserName() === 'Opera') {
     self.registration.showNotification(notification.title, {
       body: notification.message,
       icon: notification.icon,
       image: notification.image,
       requireInteraction: notification.requireInteraction,
-      data: notification.data
+      data: notification.data,
+      actions: notification.actions
     });
-  }
-  else{
+  } else {
     return self.registration.showNotification(notification.title, {
       body: notification.message,
       icon: notification.icon,
       image: notification.image,
       requireInteraction: notification.requireInteraction,
-      data: notification.data
-    }); 
+      data: notification.data,
+      actions: notification.actions
+    });
   }
 }
 

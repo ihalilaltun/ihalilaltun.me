@@ -141,7 +141,7 @@ function showSuccess(data) {
   notification.requireInteraction = true;
   notification.data = {};
   notification.data.url = data.redirectUrl;
-  if (data.actions) {
+  if (data.actions && getBrowser()!=='Firefox') {
     notification.actions = JSON.parse(data.actions) || [];
     notification.data.actionUrls = JSON.parse(data.actionUrls) || [];
   }

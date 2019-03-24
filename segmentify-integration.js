@@ -110,7 +110,7 @@
     var findPageType = function() {
       try {
         /* Home Page, Category Page, Product Page, Basket Page, Search Page, Checkout Success Page */
-        if (jQuery("body").hasClass("homepage")) {
+        if (document.location.pathname.split("/").slice(-1) == "") {
           pageVariables.category = "Home Page";
           return;
         }

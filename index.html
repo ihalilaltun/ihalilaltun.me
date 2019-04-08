@@ -35,7 +35,7 @@
 p.onclick = function() {
     // Ensure that the user can receive Safari Push Notifications.
     if ('safari' in window && 'pushNotification' in window.safari) {
-        var permissionData = window.safari.pushNotification.permission('web.com.segmentify.push.apple');
+        var permissionData = window.safari.pushNotification.permission('web.com.segmentify.renklidolap.webpush');
         checkRemotePermission(permissionData);
     }
 };
@@ -44,8 +44,8 @@ var checkRemotePermission = function (permissionData) {
     if (permissionData.permission === 'default') {
         // This is a new web service URL and its validity is unknown.
         window.safari.pushNotification.requestPermission(
-            'https://safari-test.segmentify.com', // The web service URL.
-            'web.com.segmentify.push.apple',     // The Website Push ID.
+            'https://dce-test.segmentify.com/safari/93a9a7c4-dc2e-49f7-832e-7c7fc3dabbf9', // The web service URL.
+            'web.com.segmentify.renklidolap.webpush',     // The Website Push ID.
             {}, // Data that you choose to send to your server to help you identify the user.
             checkRemotePermission         // The callback function.
         );

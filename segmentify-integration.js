@@ -25,7 +25,6 @@
 
   Segmentify('apikey', '8f6b9ae8-7d0e-455d-be6d-bdf7b74efcf7',true,false);
 
-
   function waitSegmentifyAndjQuery() {
     if (window["_SgmntfY_"] && window["_SgmntfY_"]._getJq()) {
       window.segJquery = window["_SgmntfY_"]._getJq();

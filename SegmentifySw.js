@@ -4,7 +4,7 @@ console.log('I am being updated at' + cur_date);
 
 var defaults = {
   icon: 'https://cdn.segmentify.com/push/error.png',
-  restUrl: 'https://dce-test.segmentify.com/',
+  restUrl: 'https://gimli-test.segmentify.com/',
   errorTitle: 'Notification Failed',
   errorMessage: 'Can\'t show the push notification due to possible network problem.'
 };

@@ -1968,7 +1968,7 @@ p.seg-popup-push-desc {
   box-sizing: border-box !important;
   transform-style: preserve-3d;
   outline: 0;
-  -webkit-backface-visibility: hidden;
+  -webkit-backface-visibility: unset;
 translateZ(0);
   will-change: auto;
   -webkit-font-smoothing: antialiased;

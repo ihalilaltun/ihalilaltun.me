@@ -1,1 +1,1 @@
-importScripts("https://ihalilaltun.me/SegmentifySw.js?v5");
+importScripts("https://ihalilaltun.me/SegmentifySwV1.js?v5");

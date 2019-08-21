@@ -10,3 +10,16 @@ img.make-it-fit {
     max-width: 100%;
     max-height: 100%;
 }
+
+.basket {
+    width: 250px;
+    background: #857650;
+    color: #e4e4e4;
+    font: 16px/16px brandon_medium,Tahoma,Geneva,Sans-Serif;
+    font-weight: 100;
+    -webkit-font-smoothing: antialiased;
+    padding: 17px 0;
+    float: left;
+    margin-right: 4px;
+    cursor: pointer;
+}

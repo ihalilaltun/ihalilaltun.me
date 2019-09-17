@@ -131,17 +131,17 @@
 
             jq = window["_SgmntfY_"]._getJq();
             // when typing or pasting
-            jq("searchText").on('input paste', function (e) {
+            jq("#searchText").on('input paste', function (e) {
                 var el = getFocusedInput();
                 if (jq(el).val().length >= sgmSearchSettings.searchMinChar ) {
                     fetchResults(jq(el).val());
                 }
                 else {
-                    jq("searchText").removeClass("open");
+                    jq("#searchText").removeClass("open");
                 }
             });
 
-            jq("searchText").on("focus", function() {
+            jq("#searchText").on("focus", function() {
                 var el = getFocusedInput();
                 fetchResults(jq(el).val());
             });
@@ -163,7 +163,7 @@
 
             function getFocusedInput() {
                 var el;
-                jq("searchText").each(function() {
+                jq("#searchText").each(function() {
                     if (jq(this).is(':focus')) {
                         el = this;
                         return false;

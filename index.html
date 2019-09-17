@@ -128,8 +128,8 @@
                 searchMinChar: 3,
                 searchDelay: 1000
             };
-            jq("#searchText").attr("autocomplete", "OFF");
             jq = window["_SgmntfY_"]._getJq();
+            jq("#searchText").attr("autocomplete", "OFF");
             // when typing or pasting
             jq("#searchText").on('input paste', function (e) {
                 var el = getFocusedInput();

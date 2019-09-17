@@ -132,9 +132,8 @@
             jq("#searchText").attr("autocomplete", "OFF");
             // when typing or pasting
             jq("#searchText").on('input paste', function (e) {
-                var el = getFocusedInput();
-                if (jq(el).val().length >= sgmSearchSettings.searchMinChar ) {
-                    fetchResults(jq(el).val());
+                if (jq("#searchText").val().length >= sgmSearchSettings.searchMinChar ) {
+                    fetchResults(jq("#searchText").val());
                 }
                 else {
                     jq("#searchText").removeClass("open");

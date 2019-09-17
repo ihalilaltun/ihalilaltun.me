@@ -124,6 +124,54 @@
 <script>
     function waitSegmentifyAndjQuery() {
         if (window["_SgmntfY_"] && window["_SgmntfY_"]._getJq()) {
+            sgmSearchSettings = {
+                searchMinChar: 3,
+                searchDelay: 1000
+            };
+
+            jq = window["_SgmntfY_"]._getJq();
+            // when typing or pasting
+            jq("searchText").on('input paste', function (e) {
+                var el = getFocusedInput();
+                if (jq(el).val().length >= sgmSearchSettings.searchMinChar ) {
+                    fetchResults(jq(el).val());
+                }
+                else {
+                    jq("searchText").removeClass("open");
+                }
+            });
+
+            jq("searchText").on("focus", function() {
+                var el = getFocusedInput();
+                fetchResults(jq(el).val());
+            });
+
+            function fetchResults(q) {
+                try {
+                    clearTimeout(searchTimer);
+                } catch (error) {}
+
+                searchTimer = setTimeout(function() {
+                    var query = document.getElementById("searchText").value;
+                    var request = {};
+                    request.name = "SEARCH";
+                    request.query = query;
+
+                    Segmentify('search', request);
+                }, sgmSearchSettings.searchDelay);
+            }
+
+            function getFocusedInput() {
+                var el;
+                jq("searchText").each(function() {
+                    if (jq(this).is(':focus')) {
+                        el = this;
+                        return false;
+                    }
+                });
+                return el;
+            }
+
             document.getElementById("searchButton").onclick = function (){
                 var query = document.getElementById("searchText").value;
                 var request = {};

@@ -124,58 +124,16 @@
 <script>
     function waitSegmentifyAndjQuery() {
         if (window["_SgmntfY_"] && window["_SgmntfY_"]._getJq()) {
-            jq = window["_SgmntfY_"]._getJq();
-            jq("#searchText").attr("autocomplete", "OFF");
-            // when typing or pasting
-            jq("#searchText").on('input paste', function (e) {
-                _SgmntfY_._variables.search.keywordSearch = jq("#searchText").val().length > 0;
-                _SgmntfY_._variables.search.emptySearch = jq("#searchText").val().length === 0;
-                if (jq("#searchText").val().length === 0 || jq("#searchText").val().length >= _SgmntfY_._variables.search.searchMinChar ) {
-                    fetchResults(jq("#searchText").val());
-                }
-                    });
-
-            jq("#searchText").on("focus", function() {
-                _SgmntfY_._variables.search.keywordSearch = jq("#searchText").val().length > 0;
-                _SgmntfY_._variables.search.emptySearch = jq("#searchText").val().length === 0;
-                var el = getFocusedInput();
-                fetchResults(jq(el).val());
-            });
-
-            function fetchResults(q) {
-                try {
-                    clearTimeout(searchTimer);
-                } catch (error) {}
-
-                searchTimer = setTimeout(function() {
-                    var query = document.getElementById("searchText").value;
-                    var request = {};
-                    request.name = "SEARCH";
-                    request.query = query;
-
-                    Segmentify('search', request);
-                }, _SgmntfY_._variables.search.searchDelay);
-            }
-
-            function getFocusedInput() {
-                var el;
-                jq("#searchText").each(function() {
-                    if (jq(this).is(':focus')) {
-                        el = this;
-                        return false;
-                    }
-                });
-                return el;
-            }
+            _SgmntfY_._variables.search.searchInput = "#searchText";
+            _SgmntfY_._variables.search.searchDelay = 500;
+            _SgmntfY_._variables.search.searchMinChar = 3;
 
             document.getElementById("searchButton").onclick = function (){
                 var query = document.getElementById("searchText").value;
                 var request = {};
                 request.name = "SEARCH";
                 request.query = query;
-
                 Segmentify('search', request);
-
             }
         } else {
             setTimeout(waitSegmentifyAndjQuery, 100);

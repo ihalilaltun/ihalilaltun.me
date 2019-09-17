@@ -124,15 +124,11 @@
 <script>
     function waitSegmentifyAndjQuery() {
         if (window["_SgmntfY_"] && window["_SgmntfY_"]._getJq()) {
-            sgmSearchSettings = {
-                searchMinChar: 3,
-                searchDelay: 1000
-            };
             jq = window["_SgmntfY_"]._getJq();
             jq("#searchText").attr("autocomplete", "OFF");
             // when typing or pasting
             jq("#searchText").on('input paste', function (e) {
-                if (jq("#searchText").val().length >= sgmSearchSettings.searchMinChar ) {
+                if (jq("#searchText").val().length >=  _SgmntfY_._variables.searchMinChar ) {
                     fetchResults(jq("#searchText").val());
                 }
                 else {
@@ -157,7 +153,7 @@
                     request.query = query;
 
                     Segmentify('search', request);
-                }, sgmSearchSettings.searchDelay);
+                }, _SgmntfY_._variables.searchDelay);
             }
 
             function getFocusedInput() {

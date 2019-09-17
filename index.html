@@ -133,12 +133,11 @@
                 if (jq("#searchText").val().length >=  _SgmntfY_._variables.search.searchMinChar ) {
                     fetchResults(jq("#searchText").val());
                 }
-                else {
-                    jq(_SgmntfY_._variables.search.searchResultsEl).removeClass("open");
-                }
             });
 
             jq("#searchText").on("focus", function() {
+                _SgmntfY_._variables.search.keywordSearch = jq("#searchText").val().length > 0;
+                _SgmntfY_._variables.search.emptySearch = jq("#searchText").val().length === 0;
                 var el = getFocusedInput();
                 fetchResults(jq(el).val());
             });

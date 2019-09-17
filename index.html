@@ -130,10 +130,10 @@
             jq("#searchText").on('input paste', function (e) {
                 _SgmntfY_._variables.search.keywordSearch = jq("#searchText").val().length > 0;
                 _SgmntfY_._variables.search.emptySearch = jq("#searchText").val().length === 0;
-                if (jq("#searchText").val().length >=  _SgmntfY_._variables.search.searchMinChar ) {
+                if (jq("#searchText").val().length === 0 || jq("#searchText").val().length >= _SgmntfY_._variables.search.searchMinChar ) {
                     fetchResults(jq("#searchText").val());
                 }
-            });
+                    });
 
             jq("#searchText").on("focus", function() {
                 _SgmntfY_._variables.search.keywordSearch = jq("#searchText").val().length > 0;

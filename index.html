@@ -128,7 +128,9 @@
             jq("#searchText").attr("autocomplete", "OFF");
             // when typing or pasting
             jq("#searchText").on('input paste', function (e) {
-                if (jq("#searchText").val().length >=  _SgmntfY_._variables.searchMinChar ) {
+                _SgmntfY_._variables.search.keywordSearch = jq("#searchText").val().length > 0;
+                _SgmntfY_._variables.search.emptySearch = jq("#searchText").val().length === 0;
+                if (jq("#searchText").val().length >=  _SgmntfY_._variables.search.searchMinChar ) {
                     fetchResults(jq("#searchText").val());
                 }
                 else {
@@ -153,7 +155,7 @@
                     request.query = query;
 
                     Segmentify('search', request);
-                }, _SgmntfY_._variables.searchDelay);
+                }, _SgmntfY_._variables.search.searchDelay);
             }
 
             function getFocusedInput() {

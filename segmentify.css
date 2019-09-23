@@ -3152,11 +3152,13 @@ Mobile View
 @media screen and (max-width: 800px) {
   .sgm-search-products-title-container{display:none!important;}
   .seg-search-wrapper {
-    width: calc(100%) !important;
     left: 0px !important;
     right: 10px !important;
     display: block !important;
     overflow: auto;
+    width: 100vw!important;
+    margin-left: unset;
+    transform: translateX(-50%);
   }
   .seg-search-wrapper [data-group=brands],
   .seg-search-wrapper [data-group=keywords]

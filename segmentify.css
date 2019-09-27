@@ -1743,85 +1743,85 @@ p.seg-popup-push-desc {
 }
 
 .seg-popup-push-bttns-new button {
-    display: inline-block;
-    border-radius: 3px!important;
-    border: 0!important;
-    width: 102px!important;
-    background: transparent;
-    padding: 10px 9px!important;
-    font-weight: 700!important;
-    font-size: 13px!important;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    position: relative;
-    outline: 0;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    overflow: hidden;
-    margin-bottom: 0;
-    text-shadow: 0 0!important;
-    text-transform: capitalize;
-    letter-spacing: 1px;
-    -webkit-transition: opacity 0.3s, background .3s;
-    -moz-transition: opacity 0.3s, background .3s;
-    transition: opacity 0.3s, background .3s
+  display: inline-block;
+  border-radius: 3px!important;
+  border: 0!important;
+  width: 102px!important;
+  background: transparent;
+  padding: 10px 9px!important;
+  font-weight: 700!important;
+  font-size: 13px!important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  outline: 0;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow: hidden;
+  margin-bottom: 0;
+  text-shadow: 0 0!important;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  -webkit-transition: opacity 0.3s, background .3s;
+  -moz-transition: opacity 0.3s, background .3s;
+  transition: opacity 0.3s, background .3s
 }
 .seg-popup-push-bttns-new button span {
-    font-weight: 700!important;
-    font-size: 14px!important
+  font-weight: 700!important;
+  font-size: 14px!important
 }
 .seg-popup-push-bttns-new button:active {
-    box-shadow: 0 0!important;
-    top: 1px
+  box-shadow: 0 0!important;
+  top: 1px
 }
 .seg-popup-push-bttns-new {
-    text-align: right;
-    margin-top: 20px;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-justify-content: flex-end;
-    -ms-flex-pack: end;
-    justify-content: flex-end
+  text-align: right;
+  margin-top: 20px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end
 }
 .seg-popup-push-bttns-new .seg-popup-push-bttn-allow-new {
-    background: #32b978;
-    color: #fff;
-    box-shadow: 0 3px 30px rgba(0, 0, 0, 0.12)!important
+  background: #32b978;
+  color: #fff;
+  box-shadow: 0 3px 30px rgba(0, 0, 0, 0.12)!important
 }
 .seg-popup-push-bttns-new .seg-popup-push-bttn-allow-new:hover {
-    background: #2bb070
+  background: #2bb070
 }
 .seg-popup-push-bttns-new .seg-popup-push-bttn-later-new {
-    color: rgba(0, 0, 0, 0.43);
-    border: 0!important;
-    margin-right: 10px
+  color: rgba(0, 0, 0, 0.43);
+  border: 0!important;
+  margin-right: 10px
 }
 .seg-popup-push-bttns-new .seg-popup-push-bttn-allow-new svg {
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    fill: currentColor;
-    vertical-align: middle;
-    overflow: hidden;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: -110px;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+  vertical-align: middle;
+  overflow: hidden;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: -110px;
 }
 .seg-popup-push-bttns-new .seg-popup-push-bttn-allow-new span {
-    position: relative;
-    left: 0
+  position: relative;
+  left: 0
 }
 .seg-popup-push-bttns-new .seg-popup-push-bttn-later-new:hover {
-    background: #f0f0f0
+  background: #f0f0f0
 }
 
 .seg-popup-push-pulse {
@@ -2887,9 +2887,12 @@ div.seg-search-wrapper.mobile {
   font-size: 0px;
   display: none;
   box-sizing: border-box;
-  position: absolute;
   z-index: 99999999999;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+  position : fixed;
+  top : 0;
+  left : 0;
+  margin-left: 0px;
 }
 /*
 Conditional viewing
@@ -3158,7 +3161,7 @@ Mobile View
     overflow: auto;
     width: 100vw!important;
     margin-left: unset;
-    transform: translateX(-50%);
+    /*transform: translateX(-50%);*/
   }
   .seg-search-wrapper [data-group=brands],
   .seg-search-wrapper [data-group=keywords]

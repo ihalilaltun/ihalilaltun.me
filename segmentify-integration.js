@@ -18,13 +18,12 @@
       var s = document.getElementsByTagName('script')[0];
       s.parentNode.insertBefore(wa, s);
     }
-  })('//cdn.segmentify.com/v3/qa/segmentify.debug.js', 'Segmentify', {
-    segmentifyApiUrl: '//gandalf-test.segmentify.com/',
-    segmentifyPushUrl: '//gimli-test.segmentify.com/',	  
+  })('//cdn.segmentify.com/qa/segmentify.debug.js', 'Segmentify', {
+    segmentifyApiUrl: '//dce-test.segmentify.com/',
     categoryHierarchy: true
   });
 
-  Segmentify('apikey', '8f6b9ae8-7d0e-455d-be6d-bdf7b74efcf7',true,false);
+  Segmentify('apikey', '93a9a7c4-dc2e-49f7-832e-7c7fc3dabbf9',true,false);
 
   function waitSegmentifyAndjQuery() {
     if (window["_SgmntfY_"] && window["_SgmntfY_"]._getJq()) {
@@ -32,7 +31,6 @@
 
       segJquery(document).ready(function() {
         SegmentifyIntegration(window.segJquery).init();
-        _SgmntfY_._initSearch('#searchText');
       });
     } else {
       setTimeout(waitSegmentifyAndjQuery, 100);

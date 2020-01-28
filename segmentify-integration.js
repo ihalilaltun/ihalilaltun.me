@@ -18,12 +18,13 @@
       var s = document.getElementsByTagName('script')[0];
       s.parentNode.insertBefore(wa, s);
     }
-  })('//cdn.segmentify.com/qa/v1/segmentify.debug.js', 'Segmentify', {
-    segmentifyApiUrl: '//dce-test.segmentify.com/',
+  })('//cdn.segmentify.com/v3/qa/segmentify.debug.js', 'Segmentify', {
+    segmentifyApiUrl: '//gandalf-test.segmentify.com/',
+    segmentifyPushUrl: '//gimli-test.segmentify.com/',	  
     categoryHierarchy: true
   });
 
-  Segmentify('apikey', '93a9a7c4-dc2e-49f7-832e-7c7fc3dabbf9',true,false);
+  Segmentify('apikey', 'b820dd04-233b-467d-8169-0554dfb25380',true,false);
 
   function waitSegmentifyAndjQuery() {
     if (window["_SgmntfY_"] && window["_SgmntfY_"]._getJq()) {
@@ -31,6 +32,7 @@
 
       segJquery(document).ready(function() {
         SegmentifyIntegration(window.segJquery).init();
+        _SgmntfY_._initSearch('#searchText');
       });
     } else {
       setTimeout(waitSegmentifyAndjQuery, 100);
@@ -109,10 +111,10 @@
     var findPageType = function() {
       try {
         /* Home Page, Category Page, Product Page, Basket Page, Search Page, Checkout Success Page */
-        if (document.location.pathname.split("/").slice(-1) == "") {
+        /*if (document.location.pathname.split("/").slice(-1) == "") {
           pageVariables.category = "Home Page";
           return;
-        }
+        }*/
 
         if (jQuery("body").hasClass("template-collection")) {
           pageVariables.category = "Category Page";

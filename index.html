@@ -81,42 +81,8 @@
     <div class="homepage">
     <div class='fill-screen'><img class='make-it-fit' src='https://ihalilaltun.me/at.jpg'></div>
         
-            <button id="subscribe" class="subscribe" type="button">Click Me!</button>
 
-            <script>
-        
-        var p = document.getElementById("subscribe");
-p.onclick = function() {
-    // Ensure that the user can receive Safari Push Notifications.
-    if ('safari' in window && 'pushNotification' in window.safari) {
-        var permissionData = window.safari.pushNotification.permission('web.com.segmentify.renklidolap.webpush');
-        checkRemotePermission(permissionData);
-    }
-};
- 
-var checkRemotePermission = function (permissionData) {
-    if (permissionData.permission === 'default') {
-        // This is a new web service URL and its validity is unknown.
-        window.safari.pushNotification.requestPermission(
-            'https://dce-test.segmentify.com/safari/93a9a7c4-dc2e-49f7-832e-7c7fc3dabbf9', // The web service URL.
-            'web.com.segmentify.renklidolap.webpush',     // The Website Push ID.
-            {}, // Data that you choose to send to your server to help you identify the user.
-            checkRemotePermission         // The callback function.
-        );
-    }
-    else if (permissionData.permission === 'denied') {
-        console.log(permissionData);
-        // The user said no.
-    }
-    else if (permissionData.permission === 'granted') {
-        console.log(permissionData);
-        // The web service URL is a valid push provider, and the user said yes.
-        // permissionData.deviceToken is now available to use.
-    }
-};
-    </script>
-
-<div class="seg-product-container pure-g" style="">
+<div class="pure-g" style="">
 
         <div class="rec-product seg-col-md-3 pure-u-1-1 pure-u-md-1-2 pure-u-lg-1-4">
             <div href="https://ihalilaltun.me/1-l-le-parfait-jar/" target="_self" title="1 L Le Parfait Jar - Üü Ğğ Çç Şş İi Iı Öö">
@@ -303,5 +269,29 @@ var checkRemotePermission = function (permissionData) {
         </div>
 
 <!--<script type="text/javascript">var subscribersSiteId='b93570eb-c830-4f21-83bc-5360318795a2';</script><script type="text/javascript" src="https://cdn.subscribers.com/assets/subscribers.js"></script>-->
+<div id = "segmentify-integration-UI" class="segmentify-integration-UI"></div>
+
+<div class="stickyFooter">
+    <a href="https://ihalilaltun.me/PERDE">PERDE CATEGORY</a>
+    <a href="">|</a>
+    <a href="https://ihalilaltun.me/BANYO">BANYO CATEGORY</a>
+    <a href="">|</a>
+    <a href="https://ihalilaltun.me/PERDE_PRODUCT_VIEW">PERDE PRODUCT_VIEW</a>
+    <a href="">|</a>
+    <a href="https://ihalilaltun.me/BANYO_PRODUCT_VIEW">BANYO PRODUCT_VIEW</a>
+    <a href="">|</a>
+  <a href="https://ihalilaltun.me/">Home</a>
+  <a href="">|</a>
+  <a href="https://https://ihalilaltun.me/men-tshirt-casual/">T-Shirt Casual</a>
+  <a href="">|</a>
+  <a href="https://ihalilaltun.me/men-tshirt-captainamerica/">T-Shirt Captain America</a>
+  <a href="">|</a>
+  <a href="https://ihalilaltun.me/men-tshirt-crossfit/">T-Shirt Crossfit</a>
+</div>
+<script type="text/javascript">
+    Segmentify('view:page', {
+          'category': 'Home Page'
+        });
+</script>
 
 </body>

@@ -19,8 +19,8 @@
       s.parentNode.insertBefore(wa, s);
     }
   })('//cdn.segmentify.com/v3/qa/segmentify.debug.js', 'Segmentify', {
-    segmentifyApiUrl: '//gandalf-test.segmentify.com/',
-    segmentifyPushUrl: '//gimli-test.segmentify.com/',	  
+    segmentifyApiUrl: '//gandalf-dev.segmentify.com/',
+    segmentifyPushUrl: '//gimli-dev.segmentify.com/',	  
     categoryHierarchy: true
   });
 

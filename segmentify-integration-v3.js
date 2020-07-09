@@ -18,13 +18,13 @@
       var s = document.getElementsByTagName('script')[0];
       s.parentNode.insertBefore(wa, s);
     }
-  })('//cdn.segmentify.com/v3/qa/segmentify.debug.js', 'Segmentify', {
+  })('//cdn.segmentify.com/v3/dev/segmentify.debug.js', 'Segmentify', {
     segmentifyApiUrl: '//gandalf-dev.segmentify.com/',
     segmentifyPushUrl: '//gimli-dev.segmentify.com/',	  
     categoryHierarchy: true
   });
 
-  Segmentify('apikey', 'b820dd04-233b-467d-8169-0554dfb25380',true,false);
+  Segmentify('apikey', 'ae272bfb-214b-4cdd-b5c4-1dddde09e95e',true,false);
 
   function waitSegmentifyAndjQuery() {
     if (window["_SgmntfY_"] && window["_SgmntfY_"]._getJq()) {

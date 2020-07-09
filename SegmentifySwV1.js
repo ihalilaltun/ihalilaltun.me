@@ -4,7 +4,7 @@ console.log('I am being updated at' + cur_date);
 
 var defaults = {
   icon: 'https://cdn.segmentify.com/push/error.png',
-  restUrl: 'https://gimli-dev.segmentify.com/',
+  restUrl: 'https://dce-test.segmentify.com/',
   errorTitle: 'Notification Failed',
   errorMessage: 'Can\'t show the push notification due to possible network problem.'
 };
@@ -33,6 +33,33 @@ self.addEventListener('push', function (event) {
             }
 
             return showSuccess(payloadJson);
+          } else { // v1
+            // sync subscription
+            syncSubscription();
+            // fetch notification from engine
+            var url = defaults.restUrl + 'notifications/push/' + subscriptionId;
+            var init = {
+              method: 'GET',
+              mode: 'cors',
+              cache: 'default'
+            };
+            return fetch(url, init)
+              .then(status)
+              .then(json)
+              .then(function (data) {
+                if (data.length == 0) {
+                  throw new Error('Couldnt get notifications from engine');
+                } else {
+                  var promises = [];
+                  for (var i = 0; i < data.length; ++i) {
+                    var notification = data[i];
+                    promises.push(showSuccess(notification));
+                  }
+                  return Promise.all(promises);
+                }
+              }).catch(function (error) {
+                return showError(error, subscriptionId);
+              });
           }
         } catch (error) {
           return showError(error, subscriptionId);

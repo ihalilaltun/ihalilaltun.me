@@ -9,6 +9,7 @@
     window[namespace] = window[namespace] || function() {
       (window[namespace].q = window[namespace].q || []).push(arguments);
     };
+    window.sgfLayer = {};
     window[namespace].config = config || {};
     if (!document.getElementById('__segmentify_script__')) {
       var wa = document.createElement('script');
@@ -21,10 +22,11 @@
   })('//cdn.segmentify.com/v3/dev/segmentify.debug.js', 'Segmentify', {
     segmentifyApiUrl: '//gandalf-dev.segmentify.com/',
     segmentifyPushUrl: '//gimli-dev.segmentify.com/',	  
-    categoryHierarchy: true
+    categoryHierarchy: true,
+    currency: 'TRY'
   });
 
-  Segmentify('apikey', 'ae272bfb-214b-4cdd-b5c4-1dddde09e95e',true,false);
+  Segmentify('apiKey', 'ae272bfb-214b-4cdd-b5c4-1dddde09e95e', true,false);
 
   function waitSegmentifyAndjQuery() {
     if (window["_SgmntfY_"] && window["_SgmntfY_"]._getJq()) {
@@ -32,7 +34,6 @@
 
       segJquery(document).ready(function() {
         SegmentifyIntegration(window.segJquery).init();
-        _SgmntfY_._initSearch('#searchText');
       });
     } else {
       setTimeout(waitSegmentifyAndjQuery, 100);
@@ -187,7 +188,6 @@
       "All Pages": function() {
         Segmentify('view:page',{'category':pageVariables.category,'lang':'EN',subCategory:'Shirt'})
         //segmentifyEvents.viewPage(pageVariables.category, pageVariables.subCategory, pageVariables.params);
-        
 
      
      
@@ -201,17 +201,8 @@
         
         
        users = []
-	   users[1] = {"email": "cem.ayan@segmentify.com", "username": "cemayan", "fullName": "Cem Ayan"}
-       users[2] = {"email": "ahmet.babacan+atadam123123@segmentify.com", "username": "ababacan", "fullName": "Ahmet Babacan","birthDate":"03.10.2018"}
-
-       users[3] = {"email": "cem.ayan+a1@segmentify.com", "username": "cemayan1", "fullName": "Cem Ayan"}
-                     users[4] = {"email": "ahmet.babacan+qa@segmentify.com", "username": "ababacan", "fullName": "Ahmet Babacan"}
-       
-       
+      
        if(register!=""){
-        
-         
-
        Segmentify('user:signup',{
            "email": users[parseInt(register)].email,
            "username" : users[parseInt(register)].username,
@@ -253,9 +244,6 @@
            "fullName" : users[parseInt(logout)].fullName
 			}) 
         } 
-          
-          
-
           
           
         }

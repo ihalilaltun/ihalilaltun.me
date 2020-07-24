@@ -1,1 +1,1 @@
-importScripts('https://cdn.segmentify.com/v3/dev/sw.debug.js?v1');
+importScripts('https://cdn.segmentify.com/v3/dev/sw.debug.js?v2');

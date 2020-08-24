@@ -3,6 +3,7 @@ const url = 'https://cdn.segmentify.com/v3/dev/sw.debug.js?v' + Math.round(Math.
 self.addEventListener('error', function(e) {
   console.log(e.filename, e.lineno, e.colno, e.message);
   console.log(e);
+  debugger;
   e.preventDefault();
 });
 

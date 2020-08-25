@@ -1,6 +1,6 @@
 'use strict';
 
-console.log('I am being updated at ' + (new Date()).toString() + ' version 3');
+console.log('I am being updated at ' + (new Date()).toString() + ' version 2');
 
 var defaults = {
   icon: 'https://cdn.segmentify.com/push/error.png',

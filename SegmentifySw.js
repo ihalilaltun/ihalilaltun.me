@@ -1,6 +1,6 @@
 'use strict';
 
-console.log('I am being updated at ' + cur_date.toString());
+console.log('I am being updated at ' + (new Date()).toString());
 
 var defaults = {
   icon: 'https://cdn.segmentify.com/push/error.png',

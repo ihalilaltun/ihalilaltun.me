@@ -225,7 +225,7 @@ function updateRegistration(_apiKey, _dataCenter) {
     request.onupgradeneeded = function () {
       debugger;
       var db = request.result;
-      var store = db.createObjectStore("sgf", {keyPath: "name"});
+      var store = db.createObjectStore("sgf", {keyPath: "apiKey"});
       var apiKeyIndex = store.createIndex("by_apiKey", "apiKey", {unique: true});
       var dataCenterIndex = store.createIndex("by_dataCenter", "dataCenter", {unique: true});
       store.put({apiKey: _apiKey, dataCenter: _dataCenter});
@@ -234,7 +234,7 @@ function updateRegistration(_apiKey, _dataCenter) {
     request.onsuccess = function () {
       debugger;
       db = request.result;
-      var store = db.createObjectStore("sgf", {keyPath: "name"});
+      var store = db.createObjectStore("sgf", {keyPath: "apiKey"});
       var apiKeyIndex = store.createIndex("by_apiKey", "apiKey", {unique: true});
       var dataCenterIndex = store.createIndex("by_dataCenter", "dataCenter", {unique: true});
       store.put({apiKey: _apiKey, dataCenter: _dataCenter});

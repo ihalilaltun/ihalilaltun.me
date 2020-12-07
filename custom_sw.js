@@ -226,7 +226,7 @@ function updateRegistration(_apiKey, _dataCenter) {
       debugger;
       var db = request.result;
       var store = db.createObjectStore("sgf", {keyPath: "apiKey"});
-      store.put({apiKey: _apiKey, dc: _dataCenter}, _apiKey);
+      store.put({dc: _dataCenter}, _apiKey);
     };
 
     request.onsuccess = function () {
@@ -242,7 +242,7 @@ function updateRegistration(_apiKey, _dataCenter) {
         if (!value) {
           //var store = db.createObjectStore("sgf", {keyPath: "apiKey"});
           // var apiKeyIndex = store.createIndex("by_apiKey", "apiKey", {unique: true});
-          sgfStore.put({apiKey: _apiKey, dc: _dataCenter}, _apiKey);
+          sgfStore.put({dc: _dataCenter}, _apiKey);
         }
       };
     };

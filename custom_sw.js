@@ -210,15 +210,7 @@ function getBrowserName() {
 }
 
 function updateRegistration(_apiKey, _dataCenter) {
-  // store apiKey and send information
-  // We can use IndexedDB to store information
-  // https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB
-  console.log(_apiKey);
-  console.log(_dataCenter);
-
-  if (!self.indexedDB) {
-
-  } else {
+  if (self.indexedDB) {
     var db;
     var request = self.indexedDB.open("sgf");
 
@@ -227,6 +219,7 @@ function updateRegistration(_apiKey, _dataCenter) {
       var db = request.result;
       var store = db.createObjectStore("sgf");
       store.put(_dataCenter, _apiKey);
+      sendSubscriptionDetails(_apiKey, _dataCenter);
     };
 
     request.onsuccess = function () {
@@ -235,16 +228,35 @@ function updateRegistration(_apiKey, _dataCenter) {
 
       var transaction = db.transaction("sgf", "readwrite");
       var sgfStore = transaction.objectStore("sgf");
-      //var store = db.createObjectStore("sgf", {keyPath: "apiKey"});
       sgfStore.get(_apiKey).onsuccess = function (e) {
         var value = e.target.result;
-        console.log(value);
         if (!value) {
-          //var store = db.createObjectStore("sgf", {keyPath: "apiKey"});
-          // var apiKeyIndex = store.createIndex("by_apiKey", "apiKey", {unique: true});
           sgfStore.put(_dataCenter, _apiKey);
+          sendSubscriptionDetails(_apiKey, _dataCenter);
         }
+      };
+      sgfStore.getAll().onsuccess = function (e) {
+        var value = e.target.result;
+        debugger;
       };
     };
   }
+}
+
+function sendSubscriptionDetails(_apiKey, _dataCenter) {
+  self.registration.pushManager.getSubscription().then(function (subscription) {
+    var dataArray = {
+      subscriptionId: subscription.endpoint.split('/').slice(-1)[0]
+    };
+
+    fetch(_dataCenter + 'subscription/updateSubscription?apiKey=' + _apiKey, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(dataArray)
+    }).then(function (res) {
+      if (!res.ok) {}
+    }, function (e) {});
+  });
 }

@@ -217,8 +217,8 @@ function updateRegistration(_apiKey, _dataCenter) {
     request.onupgradeneeded = function () {
       debugger;
       var db = request.result;
-      var store = db.createObjectStore("sgf", {keyPath: "sgf_prm"});
-      store.put({dc:_dataCenter, apiKey:_apiKey}, "sgf_prm");
+      var store = db.createObjectStore("sgf", {keyPath: "sgf_prm", autoIncrement: true});
+      store.put({dc:_dataCenter, apiKey:_apiKey});
       sendSubscriptionDetails(_apiKey, _dataCenter);
     };
 

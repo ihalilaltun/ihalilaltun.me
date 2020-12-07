@@ -217,8 +217,8 @@ function updateRegistration(_apiKey, _dataCenter) {
     request.onupgradeneeded = function () {
       debugger;
       var db = request.result;
-      var store = db.createObjectStore("sgf");
-      store.put(_dataCenter, _apiKey);
+      var store = db.createObjectStore("sgf", {keyPath: "sgf_prm"});
+      store.put({dc:_dataCenter, apiKey:_apiKey}, "sgf_prm");
       sendSubscriptionDetails(_apiKey, _dataCenter);
     };
 
@@ -228,16 +228,12 @@ function updateRegistration(_apiKey, _dataCenter) {
 
       var transaction = db.transaction("sgf", "readwrite");
       var sgfStore = transaction.objectStore("sgf");
-      sgfStore.get(_apiKey).onsuccess = function (e) {
+      sgfStore.get("sgf_prm").onsuccess = function (e) {
         var value = e.target.result;
         if (!value) {
           sgfStore.put(_dataCenter, _apiKey);
           sendSubscriptionDetails(_apiKey, _dataCenter);
         }
-      };
-      sgfStore.getAll().onsuccess = function (e) {
-        var value = e.target.result;
-        debugger;
       };
     };
   }

@@ -14,7 +14,6 @@ self.addEventListener('activate', function (event) {
 });
 
 self.addEventListener('push', function (event) {
-console.log(self.location.hostname);
   event.waitUntil(
     self.registration.pushManager.getSubscription()
       .then(function (subscription) {
@@ -86,6 +85,39 @@ self.addEventListener('notificationclick', function (event) {
 
 self.addEventListener('notificationclose', function (event) {
   event.waitUntil(Promise.all([interaction(event.notification.data, 'close')]));
+});
+
+self.addEventListener('pushsubscriptionchange', function (event) {
+  if (self.indexedDB) {
+    var dc, apiKey, db;
+    var request = self.indexedDB.open("sgf");
+
+    request.onsuccess = function () {
+      debugger;
+      db = request.result;
+      var transaction = db.transaction("sgf", "readwrite");
+      var sgfStore = transaction.objectStore("sgf");
+      sgfStore.get("sgf_prm").onsuccess = function (e) {
+        var value = e.target.result;
+        if (value) {
+          dc = value.dc;
+          apiKey = value.apiKey;
+          event.waitUntil(
+              fetch(dc + 'pushsubscriptionchange?apiKey=' + apiKey, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                  oldEndpoint: event.oldSubscription ? event.oldSubscription.endpoint.split('/').slice(-1)[0] : null,
+                  newEndpoint: event.newSubscription ? event.newSubscription.endpoint.split('/').slice(-1)[0] : null,
+                  p256dh: event.newSubscription ? event.newSubscription.toJSON().keys.p256dh : null,
+                  auth: event.newSubscription ? event.newSubscription.toJSON().keys.auth : null
+                })
+              })
+          );
+        }
+      };
+    };
+  }
 });
 
 function status(response) {
@@ -230,6 +262,8 @@ function updateRegistration(_apiKey, _dataCenter) {
       var sgfStore = transaction.objectStore("sgf");
       sgfStore.get("sgf_prm").onsuccess = function (e) {
         var value = e.target.result;
+        console.log(value.dc);
+        console.log(value.apiKey);
         if (!value) {
           sgfStore.put({sgf_prm: "sgf_prm", dc:_dataCenter, apiKey:_apiKey});
           sendSubscriptionDetails(_apiKey, _dataCenter);
@@ -247,9 +281,7 @@ function sendSubscriptionDetails(_apiKey, _dataCenter) {
 
     fetch(_dataCenter + 'subscription/updateSubscription?apiKey=' + _apiKey, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(dataArray)
     }).then(function (res) {
       if (!res.ok) {}

@@ -209,10 +209,30 @@ function getBrowserName() {
   return agent;
 }
 
-function updateRegistration(apiKey, endpoint) {
+function updateRegistration(apiKey, dataCenter) {
   // store apiKey and send information
   // We can use IndexedDB to store information
   // https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB
   console.log(apiKey);
-  console.log(endpoint);
+  console.log(dataCenter);
+
+  if (!self.indexedDB) {
+
+  } else {
+    var db;
+    var request = window.indexedDB.open("sgf");
+
+    request.onupgradeneeded = function () {
+      var db = request.result;
+      var store = db.createObjectStore("sgf", {keyPath: "name"});
+      var apiKeyIndex = store.createIndex("by_apiKey", "apiKey", {unique: true});
+      var dataCenterIndex = store.createIndex("by_dataCenter", "dataCenter", {unique: true});
+      store.put({apiKey: apiKey, dataCenter: dataCenter});
+    };
+
+    request.onsuccess = function () {
+      db = request.result;
+      debugger;
+    };
+  }
 }

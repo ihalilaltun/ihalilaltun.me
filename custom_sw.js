@@ -225,8 +225,8 @@ function updateRegistration(_apiKey, _dataCenter) {
     request.onupgradeneeded = function () {
       debugger;
       var db = request.result;
-      var store = db.createObjectStore("sgf", {keyPath: "apiKey"});
-      store.put({dc: _dataCenter});
+      var store = db.createObjectStore("sgf");
+      store.put(_dataCenter, _apiKey);
     };
 
     request.onsuccess = function () {
@@ -242,7 +242,7 @@ function updateRegistration(_apiKey, _dataCenter) {
         if (!value) {
           //var store = db.createObjectStore("sgf", {keyPath: "apiKey"});
           // var apiKeyIndex = store.createIndex("by_apiKey", "apiKey", {unique: true});
-          sgfStore.put({dc: _dataCenter});
+          sgfStore.put(_dataCenter, _apiKey);
         }
       };
     };

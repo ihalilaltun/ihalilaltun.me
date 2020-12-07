@@ -7,12 +7,10 @@ var defaults = {
 };
 
 self.addEventListener('install', function (event) {
-  console.log(self.location.hostname);
   self.skipWaiting();
 });
 
 self.addEventListener('activate', function (event) {
-console.log(self.location.hostname);
 });
 
 self.addEventListener('push', function (event) {
@@ -209,4 +207,12 @@ function getBrowserName() {
   else if (/Chrome/i.test(navigator.userAgent)) agent = 'Chrome';
   else if (/Firefox/i.test(navigator.userAgent)) agent = 'Firefox';
   return agent;
+}
+
+function updateRegistration(apiKey, endpoint) {
+  // store apiKey and send information
+  // We can use IndexedDB to store information
+  // https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB
+  console.log(apiKey);
+  console.log(endpoint);
 }

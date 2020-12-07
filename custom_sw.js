@@ -220,7 +220,7 @@ function updateRegistration(apiKey, dataCenter) {
 
   } else {
     var db;
-    var request = window.indexedDB.open("sgf");
+    var request = self.indexedDB.open("sgf");
 
     request.onupgradeneeded = function () {
       var db = request.result;

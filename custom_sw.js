@@ -232,6 +232,10 @@ function updateRegistration(apiKey, dataCenter) {
 
     request.onsuccess = function () {
       db = request.result;
+      var store = db.createObjectStore("sgf", {keyPath: "name"});
+      var apiKeyIndex = store.createIndex("by_apiKey", "apiKey", {unique: true});
+      var dataCenterIndex = store.createIndex("by_dataCenter", "dataCenter", {unique: true});
+      store.put({apiKey: apiKey, dataCenter: dataCenter});
       debugger;
     };
   }

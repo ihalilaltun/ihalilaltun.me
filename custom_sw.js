@@ -213,8 +213,8 @@ function updateRegistration(_apiKey, _dataCenter) {
   // store apiKey and send information
   // We can use IndexedDB to store information
   // https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB
-  console.log(apiKey);
-  console.log(dataCenter);
+  console.log(_apiKey);
+  console.log(_dataCenter);
 
   if (!self.indexedDB) {
 

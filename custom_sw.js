@@ -227,17 +227,22 @@ function updateRegistration(_apiKey, _dataCenter) {
       var db = request.result;
       var store = db.createObjectStore("sgf", {keyPath: "apiKey"});
       var apiKeyIndex = store.createIndex("by_apiKey", "apiKey", {unique: true});
-      var dataCenterIndex = store.createIndex("by_dataCenter", "dataCenter", {unique: true});
-      store.put({apiKey: _apiKey, dataCenter: _dataCenter});
+      store.put({dc: _dataCenter});
     };
 
     request.onsuccess = function () {
       debugger;
       db = request.result;
       var store = db.createObjectStore("sgf", {keyPath: "apiKey"});
-      var apiKeyIndex = store.createIndex("by_apiKey", "apiKey", {unique: true});
-      var dataCenterIndex = store.createIndex("by_dataCenter", "dataCenter", {unique: true});
-      store.put({apiKey: _apiKey, dataCenter: _dataCenter});
+      store.get(_apiKey).onsuccess = function (e) {
+        var value = e.target.result;
+        console.log(value);
+        if (!value) {
+          var store = db.createObjectStore("sgf", {keyPath: "apiKey"});
+          var apiKeyIndex = store.createIndex("by_apiKey", "apiKey", {unique: true});
+          store.put({dc: _dataCenter});
+        }
+      };
     };
   }
 }

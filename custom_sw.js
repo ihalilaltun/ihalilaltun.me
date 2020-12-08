@@ -259,8 +259,8 @@ function updateRegistration(apiKey, dataCenter) {
       sgfStore.get("sgf_prm").onsuccess = function (e) {
         var value = e.target.result;
         if (!value) {
-          sgfStore.put({sgf_prm: "sgf_prm", dc: _dataCenter, apiKey: _apiKey});
-          sendSubscriptionDetails(_apiKey, _dataCenter);
+          sgfStore.put({sgf_prm: "sgf_prm", dc: dataCenter, apiKey: apiKey});
+          sendSubscriptionDetails(apiKey, dataCenter);
         }
       };
     };

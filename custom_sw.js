@@ -89,13 +89,12 @@ self.addEventListener('notificationclose', function (event) {
 
 self.addEventListener('pushsubscriptionchange', function (event) {
   if (self.indexedDB) {
-    var dc, apiKey, db;
+    var dc, apiKey;
     var request = self.indexedDB.open("sgf");
 
     request.onsuccess = function () {
-      debugger;
-      db = request.result;
-      var transaction = db.transaction("sgf", "readwrite");
+      var db = request.result;
+      var transaction = db.transaction("sgf", "readonly");
       var sgfStore = transaction.objectStore("sgf");
       sgfStore.get("sgf_prm").onsuccess = function (e) {
         var value = e.target.result;
@@ -103,7 +102,7 @@ self.addEventListener('pushsubscriptionchange', function (event) {
           dc = value.dc;
           apiKey = value.apiKey;
           event.waitUntil(
-              fetch(dc + 'pushsubscriptionchange?apiKey=' + apiKey, {
+              fetch(dc + 'subscription/change?apiKey=' + apiKey, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -241,31 +240,26 @@ function getBrowserName() {
   return agent;
 }
 
-function updateRegistration(_apiKey, _dataCenter) {
+function updateRegistration(apiKey, dataCenter) {
   if (self.indexedDB) {
     var db;
     var request = self.indexedDB.open("sgf");
 
     request.onupgradeneeded = function () {
-      debugger;
       var db = request.result;
       var store = db.createObjectStore("sgf", {keyPath: "sgf_prm"});
-      store.put({sgf_prm: "sgf_prm", dc:_dataCenter, apiKey:_apiKey});
-      sendSubscriptionDetails(_apiKey, _dataCenter);
+      store.put({sgf_prm: "sgf_prm", dc: dataCenter, apiKey: apiKey});
+      sendSubscriptionDetails(apiKey, dataCenter);
     };
 
     request.onsuccess = function () {
-      debugger;
       db = request.result;
-
       var transaction = db.transaction("sgf", "readwrite");
       var sgfStore = transaction.objectStore("sgf");
       sgfStore.get("sgf_prm").onsuccess = function (e) {
         var value = e.target.result;
-        console.log(value.dc);
-        console.log(value.apiKey);
         if (!value) {
-          sgfStore.put({sgf_prm: "sgf_prm", dc:_dataCenter, apiKey:_apiKey});
+          sgfStore.put({sgf_prm: "sgf_prm", dc: _dataCenter, apiKey: _apiKey});
           sendSubscriptionDetails(_apiKey, _dataCenter);
         }
       };
@@ -273,18 +267,16 @@ function updateRegistration(_apiKey, _dataCenter) {
   }
 }
 
-function sendSubscriptionDetails(_apiKey, _dataCenter) {
+function sendSubscriptionDetails(apiKey, dataCenter) {
   self.registration.pushManager.getSubscription().then(function (subscription) {
     var dataArray = {
       subscriptionId: subscription.endpoint.split('/').slice(-1)[0]
     };
 
-    fetch(_dataCenter + 'subscription/updateSubscription?apiKey=' + _apiKey, {
+    fetch(dataCenter + 'subscription/update?apiKey=' + apiKey, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(dataArray)
-    }).then(function (res) {
-      if (!res.ok) {}
-    }, function (e) {});
+    }).then(function (res) {if (!res.ok) {}}, function (e) {});
   });
 }

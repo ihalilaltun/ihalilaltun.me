@@ -260,8 +260,8 @@ function updateRegistration(apiKey, dataCenter) {
         var value = e.target.result;
         if (!value) {
           sgfStore.put({sgf_prm: "sgf_prm", dc: dataCenter, apiKey: apiKey});
-          sendSubscriptionDetails(apiKey, dataCenter);
         }
+        sendSubscriptionDetails(apiKey, dataCenter);
       };
     };
   }

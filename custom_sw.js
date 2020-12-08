@@ -269,14 +269,15 @@ function updateRegistration(apiKey, dataCenter) {
 
 function sendSubscriptionDetails(apiKey, dataCenter) {
   self.registration.pushManager.getSubscription().then(function (subscription) {
-    var dataArray = {
-      subscriptionId: subscription.endpoint.split('/').slice(-1)[0]
-    };
-
-    fetch(dataCenter + 'subscription/update?apiKey=' + apiKey, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(dataArray)
-    }).then(function (res) {if (!res.ok) {}}, function (e) {});
+    if (subscription) {
+      var dataArray = {
+        subscriptionId: subscription.endpoint.split('/').slice(-1)[0]
+      };
+      fetch(dataCenter + 'subscription/update?apiKey=' + apiKey, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(dataArray)
+      }).then(function (res) {if (!res.ok) {}}, function (e) {});
+    }
   });
 }

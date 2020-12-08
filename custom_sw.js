@@ -269,6 +269,7 @@ function updateRegistration(apiKey, dataCenter) {
 
 function sendSubscriptionDetails(apiKey, dataCenter) {
   self.registration.pushManager.getSubscription().then(function (subscription) {
+  	debugger;
     if (subscription) {
       var dataArray = {
         subscriptionId: subscription.endpoint.split('/').slice(-1)[0]

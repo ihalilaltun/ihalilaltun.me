@@ -102,17 +102,19 @@ self.addEventListener('pushsubscriptionchange', function (event) {
           dc = value.dc;
           apiKey = value.apiKey;
           event.waitUntil(
-              fetch(dc + 'subscription/change?apiKey=' + apiKey, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                  oldEndpoint: event.oldSubscription ? event.oldSubscription.endpoint.split('/').slice(-1)[0] : null,
-                  newEndpoint: event.newSubscription ? event.newSubscription.endpoint.split('/').slice(-1)[0] : null,
-                  p256dh: event.newSubscription ? event.newSubscription.toJSON().keys.p256dh : null,
-                  auth: event.newSubscription ? event.newSubscription.toJSON().keys.auth : null
-                })
-              })
-          );
+              self.registration.pushManager.subscribe(event.oldSubscription.options)
+                  .then(function (subscription) {
+                    return fetch(dc + 'subscription/change?apiKey=' + apiKey, {
+                      method: 'POST',
+                      headers: {'Content-Type': 'application/json'},
+                      body: JSON.stringify({
+                        oldEndpoint: event.oldSubscription ? event.oldSubscription.endpoint.split('/').slice(-1)[0] : null,
+                        newEndpoint: subscription ? subscription.endpoint.split('/').slice(-1)[0] : null,
+                        p256dh: subscription ? subscription.toJSON().keys.p256dh : null,
+                        auth: subscription ? subscription.toJSON().keys.auth : null
+                      })
+                    });
+                  }));
         }
       };
     };
@@ -269,7 +271,6 @@ function updateRegistration(apiKey, dataCenter) {
 
 function sendSubscriptionDetails(apiKey, dataCenter) {
   self.registration.pushManager.getSubscription().then(function (subscription) {
-  	debugger;
     if (subscription) {
       var dataArray = {
         subscriptionId: subscription.endpoint.split('/').slice(-1)[0]

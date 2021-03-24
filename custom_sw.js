@@ -300,12 +300,11 @@ function sendSubscriptionDetails(apiKey, dataCenter, tryCount) {
       var dataArray = {
         subscriptionId: subscription.endpoint.split('/').slice(-1)[0]
       };
-      fetch(dataCenter + 'subscription/update?apiKey=ae272bfb-214b-4cdd-b5c4-1dddde09e95' , {
+      fetch(dataCenter + 'subscription/update?apiKey=' + apiKey, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(dataArray)
       }).then(function (res) {
-      	console.log(tryCount);
         if (!res.ok) {
           if (tryCount < 10) {
             return sendSubscriptionDetails(apiKey, dataCenter);
@@ -313,7 +312,6 @@ function sendSubscriptionDetails(apiKey, dataCenter, tryCount) {
           return;
         }
       }).catch(function () {
-      	console.log(tryCount);
         if (tryCount < 10) {
           return sendSubscriptionDetails(apiKey, dataCenter);
         }

@@ -295,7 +295,6 @@ function updateRegistration(apiKey, dataCenter) {
 }
 
 function sendSubscriptionDetails(apiKey, dataCenter, tryCount) {
-	debugger;
   ++tryCount;
   self.registration.pushManager.getSubscription().then(function (subscription) {
     if (subscription) {
@@ -307,15 +306,19 @@ function sendSubscriptionDetails(apiKey, dataCenter, tryCount) {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(dataArray)
       }).then(function (res) {
+      	console.log(tryCount);
         if (!res.ok) {
           if (tryCount < 10) {
             return sendSubscriptionDetails(apiKey, dataCenter);
           }
+          return;
         }
       }).catch(function () {
+      	console.log(tryCount);
         if (tryCount < 10) {
           return sendSubscriptionDetails(apiKey, dataCenter);
         }
+        return;
       });
     }
   });

@@ -267,7 +267,6 @@ function getBrowserName() {
 }
 
 function updateRegistration(apiKey, dataCenter) {
-	debugger;
   if (self.indexedDB) {
     var db;
     var request = self.indexedDB.open("segmentify");

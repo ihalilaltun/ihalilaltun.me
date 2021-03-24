@@ -296,6 +296,7 @@ function updateRegistration(apiKey, dataCenter) {
 
 function sendSubscriptionDetails(apiKey, dataCenter, tryCount) {
 	debugger;
+  ++tryCount;
   self.registration.pushManager.getSubscription().then(function (subscription) {
     if (subscription) {
       var dataArray = {

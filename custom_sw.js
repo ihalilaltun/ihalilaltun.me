@@ -90,7 +90,7 @@ self.addEventListener('notificationclose', function (event) {
 self.addEventListener('pushsubscriptionchange', function (event) {
   if (self.indexedDB) {
     var dc, apiKey;
-    var request = self.indexedDB.open("sgf");
+    var request = self.indexedDB.open("segmentify");
 
     request.onsuccess = function () {
       var db = request.result;
@@ -177,6 +177,30 @@ function showSuccess(data) {
 }
 
 function showError(error, subscriptionId, payload) {
+  var dc = 'https://gimli-dev.segmentify.com/error/notification';
+  if (self.indexedDB) {
+    var request = self.indexedDB.open("segmentify");
+
+    request.onsuccess = function () {
+      var db = request.result;
+      var transaction = db.transaction("sgf", "readonly");
+      var sgfStore = transaction.objectStore("sgf");
+      sgfStore.get("sgf_prm").onsuccess = function (e) {
+        var value = e.target.result;
+        if (value) {
+          dc = value.dc;
+        }
+        return sendError(dc, error, subscriptionId, payload);
+      };
+    };
+
+    request.onerror = function (){
+      return sendError(dc, error, subscriptionId, payload);
+    }
+  }
+}
+
+function sendError(dc, error, subscriptionId, payload){
   var notification = {};
   notification.title = defaults.errorTitle;
   notification.message = defaults.errorMessage;
@@ -185,7 +209,7 @@ function showError(error, subscriptionId, payload) {
   notification.requireInteraction = false;
   notification.data = {};
 
-  return fetch('https://gimli-dev.segmentify.com/error/notification', {
+  return fetch(dc, {
     method: 'POST',
     headers: {'Content-Type':'application/json', 'SegmentifyPushQuery':'SegmentifyPushQuery'},
     body: JSON.stringify({
@@ -245,13 +269,13 @@ function getBrowserName() {
 function updateRegistration(apiKey, dataCenter) {
   if (self.indexedDB) {
     var db;
-    var request = self.indexedDB.open("sgf");
+    var request = self.indexedDB.open("segmentify");
 
     request.onupgradeneeded = function () {
       var db = request.result;
       var store = db.createObjectStore("sgf", {keyPath: "sgf_prm"});
       store.put({sgf_prm: "sgf_prm", dc: dataCenter, apiKey: apiKey});
-      sendSubscriptionDetails(apiKey, dataCenter);
+      sendSubscriptionDetails(apiKey, dataCenter, 0);
     };
 
     request.onsuccess = function () {
@@ -263,13 +287,13 @@ function updateRegistration(apiKey, dataCenter) {
         if (!value) {
           sgfStore.put({sgf_prm: "sgf_prm", dc: dataCenter, apiKey: apiKey});
         }
-        sendSubscriptionDetails(apiKey, dataCenter);
+        sendSubscriptionDetails(apiKey, dataCenter, 0);
       };
     };
   }
 }
 
-function sendSubscriptionDetails(apiKey, dataCenter) {
+function sendSubscriptionDetails(apiKey, dataCenter, tryCount) {
   self.registration.pushManager.getSubscription().then(function (subscription) {
     if (subscription) {
       var dataArray = {
@@ -279,7 +303,17 @@ function sendSubscriptionDetails(apiKey, dataCenter) {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(dataArray)
-      }).then(function (res) {if (!res.ok) {}}, function (e) {});
+      }).then(function (res) {
+        if (!res.ok) {
+          if (tryCount < 10) {
+            return sendSubscriptionDetails(apiKey, dataCenter);
+          }
+        }
+      }).catch(function () {
+        if (tryCount < 10) {
+          return sendSubscriptionDetails(apiKey, dataCenter);
+        }
+      });
     }
   });
 }

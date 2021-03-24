@@ -302,7 +302,7 @@ function sendSubscriptionDetails(apiKey, dataCenter, tryCount) {
       var dataArray = {
         subscriptionId: subscription.endpoint.split('/').slice(-1)[0]
       };
-      fetch(dataCenter + 'subscription/update?apiKey=' + apiKey, {
+      fetch(dataCenter + 'subscription/update?apiKey=ae272bfb-214b-4cdd-b5c4-1dddde09e95' , {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(dataArray)

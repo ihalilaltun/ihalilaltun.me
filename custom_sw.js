@@ -267,6 +267,7 @@ function getBrowserName() {
 }
 
 function updateRegistration(apiKey, dataCenter) {
+	debugger;
   if (self.indexedDB) {
     var db;
     var request = self.indexedDB.open("segmentify");
@@ -294,6 +295,7 @@ function updateRegistration(apiKey, dataCenter) {
 }
 
 function sendSubscriptionDetails(apiKey, dataCenter, tryCount) {
+	debugger;
   self.registration.pushManager.getSubscription().then(function (subscription) {
     if (subscription) {
       var dataArray = {

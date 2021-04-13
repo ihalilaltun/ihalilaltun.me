@@ -3070,7 +3070,7 @@ function initializeMustache(mustache) {
           }, 100);
         }
       },
-      _journeyFinished(request) {
+      _journeyFinished: function(request) {
         return request && request.originalParams
             && (request.originalParams.type === "SUCCESS" || request.originalParams.type === "sfy-jb-finish")
       }
@@ -3821,14 +3821,12 @@ function initializeMustache(mustache) {
             // send form event
             var $newsletterForm = _SgmntfY_._getJq()('#seg-email-collection');
             if ($newsletterForm.length > 0) {
-              _SgmntfY_._variables.segmentifyObj('event:interaction', {
-                type: 'submit',
-                interactionId: campaign['name'],
-                instanceId: campaign['instanceId']
-              });
               _SgmntfY_._variables.segmentifyObj('user:form', {
                 formName: campaign['name'],
-                fields: $newsletterForm.sgmSerializeForm()
+                fields: $newsletterForm.sgmSerializeForm(),
+                params: {
+                  instanceId: campaign['instanceId']
+                }
               });
             }
           }
@@ -3959,14 +3957,12 @@ function initializeMustache(mustache) {
             }, 6000);
             // send form event
             if ($form.length > 0) {
-              _SgmntfY_._variables.segmentifyObj('event:interaction', {
-                type: 'submit',
-                interactionId: campaign['name'],
-                instanceId: campaign['instanceId']
-              });
               _SgmntfY_._variables.segmentifyObj('user:form', {
                 formName: campaign['name'],
-                fields: $form.sgmSerializeForm()
+                fields: $form.sgmSerializeForm(),
+                params: {
+                  instanceId: campaign['instanceId']
+                }
               });
             }
           }
@@ -6528,7 +6524,7 @@ function initializeMustache(mustache) {
         _SgmntfY_.LOG_MESSAGE('WARN', 'Could not bind coupon bindings.');
       }
     },
-    _textCopyToClipBoard(node) {
+    _textCopyToClipBoard: function(node) {
       node = document.getElementsByClassName(node)[0];
 
       if (document.body.createTextRange) {
@@ -8202,7 +8198,7 @@ function initializeMustache(mustache) {
       }
       return outputArray;
     },
-    _pushSetPromptInteractionForVapid() {
+    _pushSetPromptInteractionForVapid: function() {
       if ("Notification" in window) {
         if (Notification.permission === 'denied') {
           _SgmntfY_._variables.pushInfo.promptInteraction = 'denied';

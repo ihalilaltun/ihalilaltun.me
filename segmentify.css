@@ -1239,61 +1239,47 @@ body.sgm-test-header-open {
 /*!                    RECOMMENDATION NORMALIZE CSS                       */
 /* ---------------------------------------------------------------------- */
 
-/**
- * Remove the outline on focused links when they are also active or hovered
- * in all browsers (opinionated).
- */
+/* Remove the outline on focused links when they are also active or hovered */
+/* in all browsers (opinionated). */
 
 .seg-rec-container a:active,
 .seg-rec-container a:hover {
   outline-width: 0;
 }
 
-/**
- * 1. Remove the gray background on active links in IE 10.
- * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
- */
+/* 1. Remove the gray background on active links in IE 10. */
+/* 2. Remove gaps in links underline in iOS 8+ and Safari 8+. */
 
 .seg-rec-container a {
   background-color: transparent; /* 1 */
   -webkit-text-decoration-skip: objects; /* 2 */
 }
 
-/**
- * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
- */
+/* Prevent the duplicate application of `bolder` by the next rule in Safari 6. */
 
 .seg-rec-container strong {
   font-weight: inherit;
 }
 
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
+/* Add the correct font weight in Chrome, Edge, and Safari. */
 
 .seg-rec-container strong {
   font-weight: bolder;
 }
 
-/**
- * Remove the border on images inside links in IE 10-.
- */
+/* Remove the border on images inside links in IE 10-. */
 
 .seg-rec-container img {
   border-style: none;
 }
 
-/**
- * Add the correct font size in all browsers.
- */
+/* Add the correct font size in all browsers. */
 
 .seg-rec-container small {
   font-size: 80%;
 }
 
-/**
- * Custom recommendation reset styles.
- */
+/* Custom recommendation reset styles. */
 
 .seg-rec-container {
   position: relative;
@@ -1327,9 +1313,7 @@ body.sgm-test-header-open {
 /*!                     DEFAULT RECOMMENDATION CSS                        */
 /* ---------------------------------------------------------------------- */
 
-/**
- * Branding link styles.
- */
+/* Branding link styles. */
 
 .seg-rec-logo {
   position: relative;
@@ -1353,9 +1337,7 @@ body.sgm-test-header-open {
   text-decoration: none;
 }
 
-/**
- * Custom styles.
- */
+/* Custom styles. */
 
 .seg-rec-container > .seg-rec-title {
   position: relative;
@@ -1756,85 +1738,85 @@ p.seg-popup-push-desc {
 }
 
 .seg-popup-push-bttns-new button {
-    display: inline-block;
-    border-radius: 3px!important;
-    border: 0!important;
-    width: 102px!important;
-    background: transparent;
-    padding: 10px 9px!important;
-    font-weight: 700!important;
-    font-size: 13px!important;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    position: relative;
-    outline: 0;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    overflow: hidden;
-    margin-bottom: 0;
-    text-shadow: 0 0!important;
-    text-transform: capitalize;
-    letter-spacing: 1px;
-    -webkit-transition: opacity 0.3s, background .3s;
-    -moz-transition: opacity 0.3s, background .3s;
-    transition: opacity 0.3s, background .3s
+  display: inline-block;
+  border-radius: 3px!important;
+  border: 0!important;
+  width: 102px!important;
+  background: transparent;
+  padding: 10px 9px!important;
+  font-weight: 700!important;
+  font-size: 13px!important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  outline: 0;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow: hidden;
+  margin-bottom: 0;
+  text-shadow: 0 0!important;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  -webkit-transition: opacity 0.3s, background .3s;
+  -moz-transition: opacity 0.3s, background .3s;
+  transition: opacity 0.3s, background .3s
 }
 .seg-popup-push-bttns-new button span {
-    font-weight: 700!important;
-    font-size: 14px!important
+  font-weight: 700!important;
+  font-size: 14px!important
 }
 .seg-popup-push-bttns-new button:active {
-    box-shadow: 0 0!important;
-    top: 1px
+  box-shadow: 0 0!important;
+  top: 1px
 }
 .seg-popup-push-bttns-new {
-    text-align: right;
-    margin-top: 20px;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-justify-content: flex-end;
-    -ms-flex-pack: end;
-    justify-content: flex-end
+  text-align: right;
+  margin-top: 20px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end
 }
 .seg-popup-push-bttns-new .seg-popup-push-bttn-allow-new {
-    background: #32b978;
-    color: #fff;
-    box-shadow: 0 3px 30px rgba(0, 0, 0, 0.12)!important
+  background: #32b978;
+  color: #fff;
+  box-shadow: 0 3px 30px rgba(0, 0, 0, 0.12)!important
 }
 .seg-popup-push-bttns-new .seg-popup-push-bttn-allow-new:hover {
-    background: #2bb070
+  background: #2bb070
 }
 .seg-popup-push-bttns-new .seg-popup-push-bttn-later-new {
-    color: rgba(0, 0, 0, 0.43);
-    border: 0!important;
-    margin-right: 10px
+  color: rgba(0, 0, 0, 0.43);
+  border: 0!important;
+  margin-right: 10px
 }
 .seg-popup-push-bttns-new .seg-popup-push-bttn-allow-new svg {
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    fill: currentColor;
-    vertical-align: middle;
-    overflow: hidden;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: -110px;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+  vertical-align: middle;
+  overflow: hidden;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: -110px;
 }
 .seg-popup-push-bttns-new .seg-popup-push-bttn-allow-new span {
-    position: relative;
-    left: 0
+  position: relative;
+  left: 0
 }
 .seg-popup-push-bttns-new .seg-popup-push-bttn-later-new:hover {
-    background: #f0f0f0
+  background: #f0f0f0
 }
 
 .seg-popup-push-pulse {
@@ -1981,11 +1963,13 @@ p.seg-popup-push-desc {
   box-sizing: border-box !important;
   transform-style: preserve-3d;
   outline: 0;
+  backface-visibility: unset;
   -webkit-backface-visibility: unset;
-translateZ(0);
+  transform: translateZ(0);
   will-change: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  perspective: 1000;
   -webkit-perspective: 1000;
 }
 
@@ -2418,7 +2402,6 @@ translateZ(0);
 
 .seg-form-control--radio.seg-form-invalid, .seg-form-control--checkbox.seg-form-invalid {
   border-bottom: 2px solid #d94848 !important;
-""
 }
 
 @keyframes sgmFormShake {
@@ -2780,6 +2763,12 @@ translateZ(0);
   background: #dbd5d5;
 }
 
+.seg-hero-banner-image {
+  display: block;
+  margin: auto;
+  width: 50%;
+}
+
 /* search keywords */
 .seg-most-search {
   background: #f2f2f2;
@@ -2863,15 +2852,13 @@ translateZ(0);
 
 /* SEARCH */
 
-/*
-Reset all properties
-*/
-.seg-search-wrapper,
-.seg-search-wrapper *:not(.sgm-search-product-info, .sgm-search-product-info *) {
-    * {
-        all: unset;
-        font-family: Arial, Helvetica, sans-serif;!important
-    }
+/* Reset all properties */
+.seg-search-wrapper {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.seg-search-wrapper:not(.sgm-search-product-info) {
+  font-family: Arial, Helvetica, sans-serif !important;
 }
 
 .seg-search-wrapper div#sgm-mobile-input {
@@ -2904,7 +2891,7 @@ Reset all properties
 }
 
 .seg-search-wrapper.sgm-search-open div#sgm-mobile-input {
-    display: block;
+  display: block;
 }
 
 .seg-search-wrapper div#sgm-mobile-input input {
@@ -3019,12 +3006,12 @@ div.seg-search-wrapper.mobile {
 }
 
 div.seg-search-wrapper.sgm-search-mobile {
-    width: 100vw !important;
-    height: 100vh !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    overflow: auto !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  overflow: auto !important;
 }
 
 div.seg-search-wrapper.mobile.open {
@@ -3045,18 +3032,16 @@ div.seg-search-wrapper.sgm-search-mobile.sgm-search-keyboard-on {
 }
 
 div.seg-search-wrapper.sgm-search-mobile.open {
-    display: block;
+  display: block;
 }
-/*
-Conditional viewing
-This classes is coming from JS
-*/
+/* Conditional viewingThis classes is coming from JS */
+
 .seg-search-wrapper.no-sidebar {
   width: 570px;
 }
 
 .seg-search-wrapper.sgm-search-no-sidebar {
-    width: 570px;
+  width: 570px;
 }
 .seg-search-wrapper.no-sidebar .sgm-search-products,
 .seg-search-wrapper.no-sidebar .sgm-search-show-all {
@@ -3065,42 +3050,42 @@ This classes is coming from JS
 
 .seg-search-wrapper.sgm-search-no-sidebar .sgm-search-products,
 .seg-search-wrapper.sgm-search-no-sidebar .sgm-search-show-all {
-    width: 100%;
+  width: 100%;
 }
 .seg-search-wrapper.no-sidebar .sgm-search-show-all {
   left: 0;
 }
 
 .seg-search-wrapper.sgm-search-no-sidebar .sgm-search-show-all {
-    left: 0;
+  left: 0;
 }
 .seg-search-wrapper.no-sidebar .sgm-search-sidebar {
   display: none;
 }
 
 .seg-search-wrapper.sgm-search-no-sidebar .sgm-search-sidebar {
-    display: none;
+  display: none;
 }
 .seg-search-wrapper.no-products {
   width: 240px;
 }
 
 .seg-search-wrapper.sgm-search-no-products {
-    width: 240px;
+  width: 240px;
 }
 .seg-search-wrapper:not(.mobile).no-products.no-sidebar{
   display: none !important;
 }
 
 .seg-search-wrapper:not(.sgm-search-mobile).sgm-search-no-products.sgm-search-no-sidebar {
-    display: none !important;
+  display: none !important;
 }
 .seg-search-wrapper.mobile.no-products .sgm-search-header {
   display: none !important;
 }
 
 .seg-search-wrapper.sgm-search-mobile.sgm-search-no-products .sgm-search-header {
-    display: none !important;
+  display: none !important;
 }
 
 .seg-search-wrapper.mobile.no-products .sgm-search-products-title-container {
@@ -3118,42 +3103,42 @@ This classes is coming from JS
 }
 
 .seg-search-wrapper.sgm-search-mobile.sgm-search-no-products #sgm-search-not-found {
-    display: block;
+  display: block;
 }
 .seg-search-wrapper.no-products .sgm-search-sidebar {
   width: 100%;
 }
 
 .seg-search-wrapper.sgm-search-no-products .sgm-search-sidebar {
-    width: 100%;
+  width: 100%;
 }
 .seg-search-wrapper.no-products .sgm-search-products {
   display: none;
 }
 
 .seg-search-wrapper.sgm-search-no-products .sgm-search-products {
-    display: none;
+  display: none;
 }
 .seg-search-wrapper.no-show-all .sgm-search-show-all {
   display: none;
 }
 
 .seg-search-wrapper.sgm-search-no-show-all .sgm-search-show-all {
-    display: none;
+  display: none;
 }
 .seg-search-wrapper.no-show-all .sgm-search-products {
   padding-bottom: 20px;
 }
 
 .seg-search-wrapper.sgm-search-no-show-all .sgm-search-products {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 .seg-search-wrapper.open {
   display: flex;
 }
 
 .seg-search-wrapper.sgm-search-open {
-    display: flex;
+  display: flex;
 }
 /* -------------------- */
 .seg-search-wrapper .sgm-search-sidebar,
@@ -3171,9 +3156,7 @@ This classes is coming from JS
   margin-bottom: 10px;
   display: block;
 }
-/*
-Sidebar
-*/
+/* Sidebar */
 .seg-search-wrapper .sgm-search-sidebar {
   width: 30%;
   background-color: #F5F6F6;
@@ -3205,7 +3188,7 @@ Sidebar
 }
 
 .seg-search-wrapper .sgm-search-sidebar li.sgm-cursor-pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 .seg-search-wrapper .sgm-search-sidebar li.selected {
   background-color: white;
@@ -3213,8 +3196,8 @@ Sidebar
 }
 
 .seg-search-wrapper .sgm-search-sidebar li.sgm-search-selected {
-    background-color: white;
-    background-color: white !important;
+  background-color: white;
+  background-color: white !important;
 }
 .seg-search-wrapper .sgm-search-sidebar li {
   text-overflow: ellipsis;
@@ -3234,9 +3217,7 @@ Sidebar
   margin-top: 0px;
   text-transform: capitalize;
 }
-/*
-Products
-*/
+/* Products */
 .seg-search-wrapper .sgm-search-products {
   width: 70%;
   background-color: white;
@@ -3250,7 +3231,7 @@ Products
 }
 
 .seg-search-wrapper:not(.sgm-search-mobile) .sgm-search-products {
-    max-height: unset !important;
+  max-height: unset !important;
 }
 .seg-search-wrapper .sgm-search-products>ul {
   list-style: none;
@@ -3388,9 +3369,7 @@ Products
   box-sizing: border-box!important;
 }
 
-/*
-Mobile View
-*/
+/* Mobile View */
 @media screen and (max-width: 801px) {
   .seg-search-wrapper:not(.no-sidebar) .sgm-search-header {
     display: none !important;
@@ -3430,10 +3409,10 @@ Mobile View
   }
 
   .seg-search-wrapper:not(.sgm-search-no-sidebar) .sgm-search-sidebar {
-      width: 100% !important;
-      display: block !important;
-      background-color: white;
-      padding-bottom: 10px !important;
+    width: 100% !important;
+    display: block !important;
+    background-color: white;
+    padding-bottom: 10px !important;
   }
   .seg-search-wrapper.no-sidebar .sgm-search-products {
     width: 100% !important;
@@ -3443,18 +3422,18 @@ Mobile View
     padding-top: 15px !important;
   }
 
-    .seg-search-unset {
-        font-size: unset;
-        transform: unset;
-    }
+  .seg-search-unset {
+    font-size: unset;
+    transform: unset;
+  }
 
-    .seg-search-wrapper.sgm-search-no-sidebar .sgm-search-products {
-        width: 100% !important;
-        display: block !important;
-        background-color: white;
-        padding-bottom: 0px !important;
-        padding-top: 15px !important;
-    }
+  .seg-search-wrapper.sgm-search-no-sidebar .sgm-search-products {
+    width: 100% !important;
+    display: block !important;
+    background-color: white;
+    padding-bottom: 0px !important;
+    padding-top: 15px !important;
+  }
   .seg-search-wrapper .sgm-search-products,
   .seg-search-wrapper .sgm-search-products>ul a {
     width: 100% !important;
@@ -3526,7 +3505,7 @@ Mobile View
 }
 
 .seg-search-wrapper:not(.sgm-search-open) {
-    display: none !important;
+  display: none !important;
 }
 
 .sgm-input-loading {
@@ -3538,151 +3517,148 @@ Mobile View
 }
 
 .seg-infinit-z-index {
-    z-index: 9999999999999!important;
+  z-index: 9999999999999!important;
 }
 
 .seg-position-fixed {
-    position: fixed!important;
+  position: fixed!important;
 }
 
 .seg-position-absolute {
-    position: absolute!important;
+  position: absolute!important;
 }
 
 #seg-coupon-asimov,
 #seg-coupon-asimov * {
-    all: initial;
-    font-family: Helvetica, Arial, sans-serif;
-    * {
-        all: unset;
-    }
+  all: initial;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 #seg-coupon-asimov {
-    position: fixed;
-    width: 225px;
-    bottom: 0;
-    transition: height 500ms ease;
-    margin-left: 10px;
-    z-index: 99999999;
+  position: fixed;
+  width: 225px;
+  bottom: 0;
+  transition: height 500ms ease;
+  margin-left: 10px;
+  z-index: 99999999;
 }
 
 #seg-coupon-asimov * {
-    font-family: Arial, Helvetica, sans-serif;
-    color: inherit;
-    text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: inherit;
+  text-align: center;
 }
 
 #seg-coupon-asimov.seg-coupon-asimov_right {
-    right: 10px;
+  right: 10px;
 }
 
 #seg-coupon-asimov.seg-coupon-asimov_right .seg-coupon-asimov_switch {
-    transform: translateY(1px) translateX(175px);
+  transform: translateY(1px) translateX(175px);
 }
 
 #seg-coupon-asimov .seg-coupon-asimov_switch,
 #seg-coupon-asimov .seg-coupon-asimov_content,
 #seg-coupon-asimov .seg-coupon-asimov_action {
-    background-color: black;
+  background-color: black;
 }
 
 #seg-coupon-asimov .seg-coupon-asimov_switch,
 #seg-coupon-asimov {
-    height: 50px;
+  height: 50px;
 }
 
 #seg-coupon-asimov .seg-coupon-asimov_switch {
-    background-image: url("https://cdn.segmentify.com/asimov/asimov-switch-1.png");
-    background-size: 60%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    width: 50px;
-    border-radius: 10px 10px 0 0;
-    cursor: pointer;
-    transform: translateY(1px);
-    height: 50px;
-    display: block;
+  background-image: url("https://cdn.segmentify.com/asimov/asimov-switch-1.png");
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 50px;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+  transform: translateY(1px);
+  height: 50px;
+  display: block;
 }
 
 #seg-coupon-asimov .seg-coupon-asimov_headline {
-    font-size: 40px;
-    font-weight: bold;
-    line-height: 1.2em;
-    display: block;
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 1.2em;
+  display: block;
 }
 
 #seg-coupon-asimov .seg-coupon-asimov_content {
-    padding: 20px;
-    display: block;
+  padding: 20px;
+  display: block;
 }
 
 #seg-coupon-asimov .seg-coupon-asimov_headline,
 #seg-coupon-asimov .seg-coupon-asimov_paragraph {
-    margin: 0px;
+  margin: 0px;
 }
 
 #seg-coupon-asimov .seg-coupon-asimov_paragraph {
-    font-size: 15px;
-    margin-top: 2px;
+  font-size: 15px;
+  margin-top: 2px;
 }
 
 #seg-coupon-asimov .seg-coupon-asimov_small {
-    font-size: 11px;
-    margin-top: 5px;
-    display: block;
-    opacity: 0.8;
-    margin-bottom: 20px;
+  font-size: 11px;
+  margin-top: 5px;
+  display: block;
+  opacity: 0.8;
+  margin-bottom: 20px;
 }
 
 #seg-coupon-asimov .seg-coupon-asimov_hr {
-    border: 1px dashed white;
-    margin-left: -20px;
-    margin-right: -20px;
-    opacity: 0.6;
+  border: 1px dashed white;
+  margin-left: -20px;
+  margin-right: -20px;
+  opacity: 0.6;
 }
 
 #seg-coupon-asimov .seg-coupon-asimov_code {
-    border: 1px dashed white;
-    border-radius: 5px;
-    padding: 10px;
-    margin-top: 20px;
-    font-size: 18px;
-    display: block;
-    box-sizing: border-box;
+  border: 1px dashed white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+  font-size: 18px;
+  display: block;
+  box-sizing: border-box;
 }
 
 #seg-coupon-asimov .seg-coupon-asimov_copy {
-    width: 100%;
-    padding: 10px;
-    background-color: white;
-    border-radius: 5px;
-    border: none;
-    color: black!important;
-    margin-top: 10px;
-    font-size: 17px;
-    cursor: pointer;
-    outline: none;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  background-color: white;
+  border-radius: 5px;
+  border: none;
+  color: black!important;
+  margin-top: 10px;
+  font-size: 17px;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
 }
 
 @media only screen and (orientation: landscape) and (max-height: 375px) {
-    #seg-coupon-asimov {
-        transform: scale(0.9);
-        transform-origin: bottom left;
-    }
+  #seg-coupon-asimov {
+    transform: scale(0.9);
+    transform-origin: bottom left;
+  }
 }
 @media only screen and (orientation: landscape) and (max-height: 280px) {
-    #seg-coupon-asimov {
-        transform: scale(0.8);
-        transform-origin: bottom left;
-    }
+  #seg-coupon-asimov {
+    transform: scale(0.8);
+    transform-origin: bottom left;
+  }
 }
 @media only screen and (orientation: landscape) and (max-height: 250px) {
-    #seg-coupon-asimov {
-        transform: scale(0.7);
-        transform-origin: bottom left;
-    }
+  #seg-coupon-asimov {
+    transform: scale(0.7);
+    transform-origin: bottom left;
+  }
 }
 
 .sgm-journey-wrapper, .sgm-journey-delivery * {
@@ -4123,9 +4099,7 @@ Mobile View
   margin-top: 50px;
 }
 
-/**
-journey builder trigger
- */
+/* journey builder trigger */
 .sgm-journey-trigger {
   position: fixed;
   z-index: 1000000000;

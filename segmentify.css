@@ -3842,17 +3842,14 @@ div.seg-search-wrapper.sgm-search-mobile.open {
 .sgm-journey-checkmark span {
   display:inline-block;
 }
-.sgm-journey-content-color ul li.sgm-journey-content-item span:after{
+.sgm-journey-content-color ul li.sgm-journey-content-item span:after {
   display: inline-table;
   content: '';
-  width: 5px;
-  height: 14px;
+  width: 25px;
+  height: 25px;
 }
-.sgm-journey-checkmark span:after{
-  padding: 2px;
-  border: solid #fff;
-  border-width: 0 3px 3px 0;
-  transform: rotate(40deg);
+.sgm-journey-checkmark span:after {
+  background: url("//cdn.segmentify.com/icons/checkmarkIcon.svg") center center no-repeat;
 }
 .sgm-journey-content-price-range-custom {
   text-align: center;

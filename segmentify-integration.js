@@ -19,7 +19,7 @@
       var s = document.getElementsByTagName('script')[0];
       s.parentNode.insertBefore(wa, s);
     }
-  })('/segmentify.debug.js', 'Segmentify', {
+  })('//cdn.segmentify.com/v3/segmentify.debug.js', 'Segmentify', {
     segmentifyApiUrl: '//gandalf-dev.segmentify.com/',
     segmentifyPushUrl: '//gimli-dev.segmentify.com/',	  
     categoryHierarchy: true,
